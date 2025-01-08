@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FirstButton from '../common/FirstButton/FirstButton';
+import styles from './Search.module.css';
 
 function Search(){
     const [searchTerm, setSearchTerm] = useState('');
@@ -14,14 +14,15 @@ function Search(){
       };
 
       return(
-        <div>
+        <div className={styles.search}>
             <input
+                className={styles.input}
                 type="text"
                 value={searchTerm}
                 onChange={handleInputChange}
-                placeholder="חפש רשת אופנה"
+                placeholder="    חפש רשת אופנה" 
             />
-            <FirstButton onClick={handleSearch} disabled={false}>🔍</FirstButton>
+            <span name={styles.btn} onClick={handleSearch}>🔍|</span>
         </div>
       )
 }
