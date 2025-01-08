@@ -1,19 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
 .button {
   padding: 10px 20px;
-  background-color: #FF7D9C;
+  background-color: #7ebc8c;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  font-family: 'Rubik', sans-serif; 
+  /* TODO : check the font */
 }
 
 .button:hover {
-  background-color: #ff517a;
+  background-color: #81D4FA;
 }
 
 .button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-  
