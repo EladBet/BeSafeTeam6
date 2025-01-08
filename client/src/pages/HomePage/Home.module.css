@@ -3,11 +3,12 @@
   padding: 20px;
 }
 
-/* .headline {
+.headline {
+  font-family: "Papyrus", Times, serif;
   font-size: 2em;
   margin-bottom: 20px;
   color: #53474F;
-} */
+}
 
 .companyActionsPanel{
   display: flex;
