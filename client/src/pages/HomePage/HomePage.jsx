@@ -12,10 +12,9 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <h1 className={styles.headline}>Duck It</h1>
-      <div className='companyActionsPanel'>
+      <div className={styles.companyActionsPanel}>
         {/* search */}
-        <Search/>
+        <Search className={styles.search}/>
         <FirstButton onClick={handleRating} disabled={false}>
           לדירוג חברות
         </FirstButton>

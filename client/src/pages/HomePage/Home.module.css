@@ -3,8 +3,15 @@
   padding: 20px;
 }
 
-.headline {
+/* .headline {
   font-size: 2em;
   margin-bottom: 20px;
   color: #53474F;
+} */
+
+.companyActionsPanel{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
 }

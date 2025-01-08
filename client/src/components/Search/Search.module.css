@@ -6,6 +6,8 @@
     border-color: black;
     border-radius: 30px;
     justify-content: space-between;
+    width: 100%; 
+    max-width: 70%;
 }
 
 .input{
