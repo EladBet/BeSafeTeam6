@@ -11,6 +11,7 @@ function Search(){
       const handleSearch = () => {
         console.log('Searching for:', searchTerm);
         // add logic in the backend
+        setSearchTerm(''); // clear the search box after searching
       };
 
       return(
