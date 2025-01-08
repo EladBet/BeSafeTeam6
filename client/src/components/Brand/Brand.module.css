@@ -1,0 +1,24 @@
+.brand {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+  }
+  
+  .modelContainer {
+    position: relative;
+    width: 400px;
+    height: auto;
+  }
+  
+  .modelImage {
+    width: 90%;
+    height: auto;
+  }
+  
+  .modelContainer > :first-child {
+    position: absolute;
+    top: -40px;
+    right: -25px;
+    z-index: 10;
+  }
+  
