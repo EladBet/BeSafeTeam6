@@ -41,8 +41,6 @@ const Home = () => {
         ))}
       </div>
       
-      {/* todo: create brand context */}
-
       <FirstButton onClick={handleMoreDeatils} disabled={false}>
         לפרטים נוספים על שיטת הדירוג שלנו
       </FirstButton>

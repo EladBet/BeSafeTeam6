@@ -5,8 +5,8 @@ const Details = () => {
     const brand = useBrand();
 
     const totalStars = 5;
-    const rating = 3; // TODO: change it that this will be input
-    
+    const starsRating = Math.round(brand.rating / 10); // max rating is 50
+
     return(
         <div className={styles.details}>
             <h1>{brand.name}</h1>
@@ -15,9 +15,9 @@ const Details = () => {
                 {[...Array(totalStars)].map((_, index) => (
                     <span
                         key={index}
-                        className={`${styles.star} ${index < rating ? styles.filled : styles.empty}`}
+                        className={`${styles.star} ${index < starsRating ? styles.filled : styles.empty}`}
                     >
-                        {index < rating ? '★' : '☆'}
+                        {index < starsRating ? '★' : '☆'}
                     </span>
                 ))}
             </div>

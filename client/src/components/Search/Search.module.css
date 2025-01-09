@@ -6,7 +6,7 @@
     border-color: black;
     border-radius: 30px;
     justify-content: space-between;
-    width: 100%; 
+    width: 70%; 
     max-width: 70%;
 }
 
@@ -15,7 +15,7 @@
     background-color: transparent;
     border: none;
     outline: none;
-    width: 90%;
+    width: 80%;
     direction: rtl; /* the text is from rught to left */
 }
 
