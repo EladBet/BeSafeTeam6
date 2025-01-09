@@ -25,7 +25,19 @@ const Home = () => {
 
       <h1 className={styles.headline}>Top 10 Fashion Brands Promoting Positive Body Image</h1>
       
-      <Brand/>
+      <div className={styles.brands}>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+        <Brand/>
+      </div>
+      
       {/* todo: create brand context */}
     </div>
   );

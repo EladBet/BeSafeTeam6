@@ -16,3 +16,25 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.brands {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  width: 100%;
+  padding: 20px 0;
+  align-items: stretch;
+}
+
+.brands::-webkit-scrollbar {
+  height: 8px; /*height of the scrollbar*/
+}
+
+.brands::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.brands::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
