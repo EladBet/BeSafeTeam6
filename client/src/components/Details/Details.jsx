@@ -1,5 +1,5 @@
 import styles from './Details.module.css'
-import useBrand, { BrandContext } from '../../context/BrandContext';
+import useBrand from '../../context/BrandContext';
 
 const Details = () => {
     const brand = useBrand();

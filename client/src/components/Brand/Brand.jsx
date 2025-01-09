@@ -1,7 +1,7 @@
 import styles from './Brand.module.css'
 import ChampionNumber from '../ChampionNumber/ChampionNumber';
 import Details from '../Details/Details';
-import useBrand, { BrandContext } from '../../context/BrandContext';
+import useBrand from '../../context/BrandContext';
 
 const Brand = () => {
     const brand = useBrand();

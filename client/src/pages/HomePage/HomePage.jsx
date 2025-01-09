@@ -2,7 +2,7 @@ import styles from './Home.module.css';
 import FirstButton from '../../components/common/FirstButton/FirstButton'
 import Search from '../../components/Search/Search'
 import Brand from '../../components/Brand/Brand';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import data from '../../mocData.model'; // TODO: delete this when use real data
 import { BrandContext } from '../../context/BrandContext';
 
@@ -18,6 +18,10 @@ const Home = () => {
   const handleMoreDeatils = () => {
     alert('Button clicked! - MoreDeatils');
   };
+
+  useEffect(()=>{
+    setBrands(data); //TODO: change - update when ever the data change
+  },[])
 
   return (
     <div className={styles.home}>
@@ -35,7 +39,7 @@ const Home = () => {
       
       <div className={styles.brands}>
         {brands.map((brand,index)=>(
-          <BrandContext.Provider value={brand}>
+          <BrandContext.Provider key= {index} value={brand}>
             <Brand/>
           </BrandContext.Provider>
         ))}
