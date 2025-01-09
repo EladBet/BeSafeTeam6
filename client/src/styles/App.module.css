@@ -1,4 +1,7 @@
 /* App.module.css */
+h1{
+  color: #12393f;
+}
 .app {
   text-align: center;
 }
