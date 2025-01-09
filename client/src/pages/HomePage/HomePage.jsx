@@ -2,8 +2,13 @@ import styles from './Home.module.css';
 import FirstButton from '../../components/common/FirstButton/FirstButton'
 import Search from '../../components/Search/Search'
 import Brand from '../../components/Brand/Brand';
+import { useState } from 'react';
+import data from '../../mocData.model'; // TODO: delete this when use real data
+import { BrandContext } from '../../context/BrandContext';
 
 const Home = () => {
+  const [brands, setBrands] = useState(data)
+
   const handleRating = () => {
     alert('Button clicked! - Rating');
   };
@@ -29,16 +34,11 @@ const Home = () => {
       <h1 className={styles.headline}>Top 10 Fashion Brands Promoting Positive Body Image</h1>
       
       <div className={styles.brands}>
-        <Brand/>
-        <Brand/>
-        <Brand/>
-        <Brand/>
-        <Brand/>
-        <Brand/>
-        <Brand/>
-        <Brand/>
-        <Brand/>
-        <Brand/>
+        {brands.map((brand,index)=>(
+          <BrandContext.Provider value={brand}>
+            <Brand/>
+          </BrandContext.Provider>
+        ))}
       </div>
       
       {/* todo: create brand context */}
