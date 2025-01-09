@@ -5,8 +5,10 @@ import Brand from '../../components/Brand/Brand';
 import { useEffect, useState } from 'react';
 import data from '../../mocData.model'; // TODO: delete this when use real data
 import { BrandContext } from '../../context/BrandContext';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [brands, setBrands] = useState(data)
 
   const handleRating = () => {
@@ -15,8 +17,8 @@ const Home = () => {
   const handleOffer = () => {
     alert('Button clicked! - Offer');
   };
-  const handleMoreDeatils = () => {
-    alert('Button clicked! - MoreDeatils');
+  const handleAbout = () => {
+    navigate('/about');
   };
 
   useEffect(()=>{
@@ -45,7 +47,7 @@ const Home = () => {
         ))}
       </div>
       
-      <FirstButton onClick={handleMoreDeatils} disabled={false}>
+      <FirstButton onClick={handleAbout} disabled={false}>
         לפרטים נוספים על שיטת הדירוג שלנו
       </FirstButton>
 

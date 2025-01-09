@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router'
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
-
+import About from './pages/AboutPage/AboutPage';
 import projectLogo from './assets/bodyfriendly-logo.png'
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
