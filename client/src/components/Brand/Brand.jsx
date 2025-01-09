@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Brand.module.css'
 import modelImage from '../../assets/model.jpeg';
 import ChampionNumber from '../ChampionNumber/ChampionNumber';
