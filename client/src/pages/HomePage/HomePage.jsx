@@ -12,10 +12,10 @@ const Home = () => {
   const [brands, setBrands] = useState(data)
 
   const handleRating = () => {
-    alert('Button clicked! - Rating');
+    navigate('/rating');
   };
   const handleOffer = () => {
-    alert('Button clicked! - Offer');
+    navigate('/add-brand');
   };
   const handleAbout = () => {
     navigate('/about');
