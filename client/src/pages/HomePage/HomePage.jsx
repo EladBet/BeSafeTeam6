@@ -10,6 +10,9 @@ const Home = () => {
   const handleOffer = () => {
     alert('Button clicked! - Offer');
   };
+  const handleMoreDeatils = () => {
+    alert('Button clicked! - MoreDeatils');
+  };
 
   return (
     <div className={styles.home}>
@@ -39,6 +42,11 @@ const Home = () => {
       </div>
       
       {/* todo: create brand context */}
+
+      <FirstButton onClick={handleMoreDeatils} disabled={false}>
+        לפרטים נוספים על שיטת הדירוג שלנו
+      </FirstButton>
+
     </div>
   );
 };
