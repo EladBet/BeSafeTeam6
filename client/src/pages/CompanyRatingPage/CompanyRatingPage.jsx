@@ -1,10 +1,10 @@
 import styles from './CompanyRating.module.css';
 import { useParams } from 'react-router-dom';
-import fetchCompanyById from '../../mockCompanies.model';
+import { fetchCompanyById } from '../../mockCompanies.model';
 import { useQuery } from '@tanstack/react-query';
 import Stars from '../../components/Stars/Stars';
 
-const Rating = () => {
+const CompanyRatingPage = () => {
   const { companyID } = useParams();
 
   const { data, error, isPending } = useQuery({
@@ -51,4 +51,4 @@ const Rating = () => {
   );
 };
 
-export default Rating;
+export default CompanyRatingPage;

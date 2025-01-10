@@ -78,7 +78,7 @@ const companies: Company[] = [
   },
 ] as const;
 
-export default async function fetchCompanyById(companyId: string) {
+export async function fetchCompanyById(companyId: string) {
   // mimic delay until server responds
   await new Promise((resolve) => setTimeout(resolve, 400));
 
@@ -88,4 +88,11 @@ export default async function fetchCompanyById(companyId: string) {
   }
 
   return company;
+}
+
+export async function fetchAllCompanies() {
+  // mimic delay until server responds
+  await new Promise((resolve) => setTimeout(resolve, 400));
+
+  return companies;
 }
