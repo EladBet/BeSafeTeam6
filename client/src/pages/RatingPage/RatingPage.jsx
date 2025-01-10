@@ -1,6 +1,6 @@
 import styles from './Rating.module.css';
 import { useParams } from 'react-router-dom';
-import fetchCompanyById from './mockCompany.model';
+import fetchCompanyById from '../../mockCompanies.model';
 import { useQuery } from '@tanstack/react-query';
 import Stars from '../../components/Stars/Stars';
 
