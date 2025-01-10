@@ -11,11 +11,16 @@ function App() {
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.appHeader}>
-          <img src={projectLogo} alt="Logo" className={styles.appLogo} />
-          <h1 title="bodyfriendly">BODYFRIENDLY</h1>
+          <Link to="/" className={styles.appLink}>
+            <img src={projectLogo} alt="Logo" className={styles.appLogo} />
+          </Link>
+          <h1 title="bodyfriendly" className={styles.siteTitle}>
+            <span style={{ fontWeight: 700 }}>BODY</span>
+            <span style={{ fontWeight: 300 }}>FRIENDLY</span>
+          </h1>
           <nav className={styles.appNav}>
             <Link to="/" className={styles.appLink}>
-              Home
+              <span className="material-icons">home</span>
             </Link>
           </nav>
         </header>

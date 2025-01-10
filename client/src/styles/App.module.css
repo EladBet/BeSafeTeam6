@@ -8,7 +8,7 @@ h1{
 
 .appHeader {
   background-color: #c3e9fb;
-  padding: 5px 30px 5px 30px;
+  padding: 0px 30px 0px 30px;
   color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
@@ -16,7 +16,21 @@ h1{
 }
 
 .appLogo {
-  height: 100px;
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  transition: 200ms ease-out;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+}
+
+.siteTitle {
+  margin-block: 18px;
 }
 
 .appNav {
@@ -37,7 +51,7 @@ h1{
 .main {
   padding: 20px;
   background-color: #F5F5F5;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .footer {
