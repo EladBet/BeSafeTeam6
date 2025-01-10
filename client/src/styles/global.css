@@ -7,8 +7,11 @@ body {
 }
 
 *, *::before, *::after {
-  font: inherit;
   box-sizing: border-box;
+}
+
+span, input {
+  font: inherit;
 }
 
 code {
