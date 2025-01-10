@@ -79,7 +79,7 @@ const companies: Company[] = [
 ] as const;
 
 export default async function fetchCompanyById(companyId: string) {
-  // mimic delay until server response
+  // mimic delay until server responds
   await new Promise((resolve) => setTimeout(resolve, 400));
 
   const company = companies.find((company) => company.id == companyId);
