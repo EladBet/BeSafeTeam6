@@ -6,7 +6,7 @@
 
 .pageContainer {
     display: flex;
-    gap: 16px;
+    gap: 20px;
 }
 
 .bannerImage {
@@ -39,7 +39,7 @@
 }
 
 .ratingOverallStars span {
-    color: rgb(49, 128, 75);
+    color: #5c8d76;
     font-size: 30px;
     margin-bottom: 36px;
 }
@@ -49,6 +49,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
+    border-radius: 8px;
+    overflow: hidden;
 
     .tableRow {
         display: contents;
