@@ -1,4 +1,4 @@
-import styles from './Rating.module.css';
+import styles from './CompanyRating.module.css';
 import { useParams } from 'react-router-dom';
 import fetchCompanyById from '../../mockCompanies.model';
 import { useQuery } from '@tanstack/react-query';

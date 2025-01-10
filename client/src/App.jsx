@@ -3,7 +3,7 @@ import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import About from './pages/AboutPage/AboutPage';
 import projectLogo from './assets/bodyfriendly-logo.png';
-import Rating from './pages/RatingPage/RatingPage';
+import CompanyRating from './pages/CompanyRatingPage/CompanyRatingPage';
 import AddBrand from './pages/AddBrandPage/AddBrandPage';
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/rating/:companyID" element={<Rating />} />
+            <Route path="/rating/:companyID" element={<CompanyRating />} />
             <Route path="/add-brand" element={<AddBrand />} />
           </Routes>
         </main>
