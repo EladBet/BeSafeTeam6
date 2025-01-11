@@ -2,10 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Body Friendly</title>
 
+     <!-- Dynamically Set Favicon -->
+     <script type="module">
+      import favicon from './src/assets/bodyfriendly-logo.png'; // Import your logo
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = favicon; // Use the imported logo as the favicon
+      document.head.appendChild(link);
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
