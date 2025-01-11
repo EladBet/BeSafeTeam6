@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <div className={styles.companyActionsPanel}>
+      <div className={styles.brandActionsPanel}>
         <Search className={styles.search} />
         <FirstButton onClick={handleRating} disabled={false}>
           לדירוג חברות

@@ -1,4 +1,4 @@
-export type Company = {
+export type brand = {
   id: string;
   name: string;
   ratingOverall: number;
@@ -9,10 +9,10 @@ export type Company = {
   }>;
 };
 
-const companies: Company[] = [
+const Brands: brand[] = [
   {
     id: '1',
-    name: 'The Good Clothes Company',
+    name: 'The Good Clothes brand',
     ratingOverall: 5,
     ratingByCategory: [
       {
@@ -78,21 +78,21 @@ const companies: Company[] = [
   },
 ] as const;
 
-export async function fetchCompanyById(companyId: string) {
+export async function fetchBrandById(brandId: string) {
   // mimic delay until server responds
   await new Promise((resolve) => setTimeout(resolve, 400));
 
-  const company = companies.find((company) => company.id == companyId);
-  if (!company) {
-    throw Error("No such company");
+  const brand = Brands.find((brand) => brand.id == brandId);
+  if (!brand) {
+    throw Error("No such brand");
   }
 
-  return company;
+  return brand;
 }
 
-export async function fetchAllCompanies() {
+export async function fetchAllBrands() {
   // mimic delay until server responds
   await new Promise((resolve) => setTimeout(resolve, 400));
 
-  return companies;
+  return Brands;
 }

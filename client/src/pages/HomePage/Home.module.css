@@ -10,7 +10,7 @@
   color: #53474F;
 }
 
-.companyActionsPanel{
+.brandActionsPanel{
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;

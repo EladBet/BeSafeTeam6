@@ -1,15 +1,15 @@
-import styles from './CompanyRating.module.css';
+import styles from './BrandRating.module.css';
 import { useParams } from 'react-router-dom';
-import { fetchCompanyById } from '../../mockCompanies.model';
+import { fetchBrandById } from '../../mockBrands.model';
 import { useQuery } from '@tanstack/react-query';
 import Stars from '../../components/Stars/Stars';
 
-const CompanyRatingPage = () => {
-  const { companyID } = useParams();
+const BrandRatingPage = () => {
+  const { brandID } = useParams();
 
   const { data, error, isPending } = useQuery({
-    queryKey: ['companies', companyID],
-    queryFn: () => fetchCompanyById(companyID),
+    queryKey: ['brands', brandID],
+    queryFn: () => fetchBrandById(brandID),
     retry: false,
   });
 
@@ -51,4 +51,4 @@ const CompanyRatingPage = () => {
   );
 };
 
-export default CompanyRatingPage;
+export default BrandRatingPage;

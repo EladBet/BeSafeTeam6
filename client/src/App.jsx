@@ -3,9 +3,9 @@ import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import About from './pages/AboutPage/AboutPage';
 import projectLogo from './assets/bodyfriendly-logo.png';
-import CompanyRating from './pages/CompanyRatingPage/CompanyRatingPage';
+import BrandRating from './pages/BrandRatingPage/BrandRatingPage';
 import AddBrand from './pages/AddBrandPage/AddBrandPage';
-import AllCompanies from './pages/AllCompanies/AllCompanies';
+import AllBrands from './pages/AllBrands/AllBrands';
 
 function App() {
   return (
@@ -29,8 +29,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/rating" element={<AllCompanies />} />
-            <Route path="/rating/:companyID" element={<CompanyRating />} />
+            <Route path="/rating" element={<AllBrands />} />
+            <Route path="/rating/:brandID" element={<BrandRating />} />
             <Route path="/add-brand" element={<AddBrand />} />
           </Routes>
         </main>
