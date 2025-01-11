@@ -35,7 +35,7 @@ function App() {
           </Routes>
         </main>
         <footer className={styles.footer}>
-          <p>&copy; 2025 My App</p>
+          <p>&copy; 2025 BodyFriendly</p>
         </footer>
       </div>
     </BrowserRouter>
