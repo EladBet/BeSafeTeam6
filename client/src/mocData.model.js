@@ -2,6 +2,7 @@ import modelImage from './assets/model.jpeg';
 
 const mockData = [
   {
+    id: 1,
     name: 'Fashion Co.',
     image: modelImage,
     rating: 50,
@@ -14,6 +15,7 @@ const mockData = [
     },
   },
   {
+    id: 2,
     name: 'Style Inc.',
     image: modelImage,
     rating: 40,
@@ -25,6 +27,7 @@ const mockData = [
     },
   },
   {
+    id: 3,
     name: 'Trendsetters Ltd.',
     image: modelImage,
     rating: 38,
