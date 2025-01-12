@@ -3,6 +3,7 @@ import ChampionNumber from '../ChampionNumber/ChampionNumber';
 import Details from '../Details/Details';
 import useBrand from '../../context/BrandContext';
 import { Link } from 'react-router-dom';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const Brand = () => {
   const brand = useBrand();
@@ -19,7 +20,7 @@ const Brand = () => {
         <img src={brand.image} alt="model" className={styles.modelImage} />
         <Details className={styles.details} />
         <Link to={`/rating/${brand.id}`} className={styles.moreDetails}>
-          <span onClick={handleClick}>&lt;</span>
+          <ArrowBackIosIcon onClick={handleClick} style={{ fontSize: 40, color: 'black' }} />
         </Link>{' '}
       </div>
     </div>
