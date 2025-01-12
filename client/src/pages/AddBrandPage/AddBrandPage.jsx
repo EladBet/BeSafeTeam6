@@ -1,5 +1,4 @@
 import styles from './AddBrand.module.css'
-import FirstButton from '../../components/common/FirstButton/FirstButton';
 import { useState } from "react";
 
 const AddBrand = () => {
@@ -32,7 +31,7 @@ const AddBrand = () => {
 
         <div className={styles.formGroup}>
           <label htmlFor="link" className={styles.label}>
-            לינק לאתר הרשת:
+            לינק לאתר:
           </label>
           <input type="text" 
                 name="link" 
