@@ -28,7 +28,11 @@ h1{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }
 }
-
+.appNav {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
 .appNav .appLink {
   cursor: pointer; 
   transition: all 0.2s ease; 
@@ -42,6 +46,32 @@ h1{
 .appNav .appLink .material-icons {
   font-size: 1.2em; 
   transition: transform 0.2s ease; 
+}
+.aboutUs,
+.appLink {
+  display: flex;
+  align-items: center;
+  transform: translateY(-2px);
+
+}
+.aboutUs {
+  color: #40B27D; 
+  font-weight: bold; 
+  font-size: 1.0rem; /* Slightly larger text */
+  font-weight: bold; /* Emphasize the link */
+  text-decoration: none; /* Remove underline */
+  margin-left: 1rem; /* Add space between other links */
+  transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+.aboutUs:hover {
+  color: #4a148c; /* Darker purple on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+.emailIcon {
+  color: #5DC4E5; /* Replace with the exact light blue color from the logo */
+  font-size: 21px; /* Keep the same size */
+  margin: 0; /* Ensure proper alignment */
 }
 
 .siteTitle {
