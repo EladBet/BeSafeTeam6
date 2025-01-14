@@ -1,0 +1,19 @@
+
+  
+  .criteriaLink {
+    color: #00695c;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .criteriaLink:hover {
+    color: #004d40;
+    text-decoration: underline;
+  }
+  .boldText {
+    font-weight: bold;
+  }
+    
