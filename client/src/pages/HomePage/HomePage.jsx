@@ -12,13 +12,16 @@ const Home = () => {
   const [brands, setBrands] = useState(data);
 
   const handleRating = () => {
-    navigate('/rating');
+    navigate('/rate-brand');
   };
   const handleOffer = () => {
     navigate('/add-brand');
   };
   const handleAbout = () => {
-    navigate('/about');
+    navigate('/criteria');
+  };
+  const handleAllBrands = () => {
+    navigate('/brands-rating');
   };
 
   useEffect(() => {
@@ -34,6 +37,9 @@ const Home = () => {
         </FirstButton>
         <FirstButton onClick={handleOffer} disabled={false}>
           להצעת רשת לדירוג
+        </FirstButton>
+        <FirstButton onClick={handleAllBrands} disabled={false}>
+          לכל המותגים
         </FirstButton>
       </div>
 

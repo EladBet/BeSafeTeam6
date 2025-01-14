@@ -17,3 +17,17 @@
   .logo:hover {
     transform: scale(1.1);
   }
+
+  .aboutUs {
+    color: #6a1b9a;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .aboutUs:hover {
+    color: #4a148c;
+    text-decoration: underline;
+  }
