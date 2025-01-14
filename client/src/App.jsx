@@ -2,10 +2,12 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router';
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import About from './pages/AboutPage/AboutPage';
+import Criteria from './pages/CriteriaPage/CriteriaPage';
 import projectLogo from './assets/bodyfriendly-logo.png';
 import BrandRating from './pages/BrandRatingPage/BrandRatingPage';
 import AddBrand from './pages/AddBrandPage/AddBrandPage';
 import AllBrands from './pages/AllBrands/AllBrands';
+import EmailIcon from '@mui/icons-material/Email';
 
 function App() {
   return (
@@ -20,6 +22,14 @@ function App() {
             <span style={{ fontWeight: 300 }}>FRIENDLY</span>
           </h1>
           <nav className={styles.appNav}>
+            <Link to="/about" className={styles.aboutUs}>
+              <span className="about-us">עלינו</span>
+            </Link>
+
+            <a href="mailto:bodyfriendlypositivity@gmail.com">
+              <EmailIcon sx={{ fontSize: 21 }} className={styles.emailIcon} />
+            </a>
+
             <Link to="/" className={styles.appLink}>
               <span className="material-icons">home</span>
             </Link>
@@ -29,8 +39,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/rating" element={<AllBrands />} />
-            <Route path="/rating/:brandID" element={<BrandRating />} />
+            <Route path="/criteria" element={<Criteria />} />
+            <Route path="/brands-rating" element={<AllBrands />} />
+            <Route path="/brands-rating/:brandID" element={<BrandRating />} />
             <Route path="/add-brand" element={<AddBrand />} />
           </Routes>
         </main>
