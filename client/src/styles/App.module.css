@@ -101,5 +101,7 @@ h1{
   width: 100%;
   bottom: 0;
   text-align: center;
+  position: relative; 
+  z-index: auto;
 }
   
