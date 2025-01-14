@@ -162,3 +162,16 @@ export async function fetchAllBrands() {
 
   return Brands;
 }
+
+// Currently the type in mongo is:
+// type BrandInMongo = {
+//   _id: string;
+//   name: string;
+//   homePage: string;
+//   logo: string;
+// }
+
+// export async function fetchAllBrands() {
+//   const res = await fetch("http://localhost:4567/brands");
+//   return await res.json();
+// }
