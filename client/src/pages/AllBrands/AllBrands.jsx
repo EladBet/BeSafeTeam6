@@ -1,5 +1,5 @@
 import styles from './AllBrands.module.css';
-import { fetchAllBrands } from '../../mockBrands.model';
+import { fetchAllBrands } from '../../services/api';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import Stars from '../../components/Stars/Stars';
@@ -23,9 +23,9 @@ const AllBrands = () => {
     <div className={styles.links}>
       <h1>Ratings by Brand</h1>
       {data.map((brand) => (
-        <Link className={styles.link} key={brand.id} to={`/rating/${brand.id}`}>
-          <p>{brand.name}</p>
-          <Stars numStars={brand.ratingOverall} />
+        <Link className={styles.link} key={brand._id} to={`/brands-rating/${brand._id}`}>
+          <p>{brand.brandName}</p>
+          <Stars numStars={3.5} />
         </Link>
       ))}
     </div>
