@@ -1,7 +1,8 @@
 import express from 'express';
 import {
     getAllBrands,
-    getSingleBrand
+    getSingleBrand,
+    createBrand
 } from '../controllers/brandsController.js';
 
 const router = express.Router();
@@ -12,5 +13,7 @@ router.get('/', getAllBrands)
 // GET specific brand by name
 router.get('/:brand', getSingleBrand)
 
+// POST new brand
+router.post('/', createBrand)
 
 export default router;

@@ -57,20 +57,22 @@ const getSingleBrand = (req, res) => {
     res.status(200).json({ brand:brandResponse });
 };
 
-// Create a new brand
-// const createBrand = (req, res) => {
-//     const { name, color, imageUrl } = req.body;
-//     const newDuck = {
-//         id: ducks.length ? ducks[ducks.length - 1].id + 1 : 1,
-//         name,
-//         color,
-//         imageUrl
-//     };
-//     ducks.push(newDuck);
-//     res.status(201).json({ duck: newDuck });
-// };
+// Create a new Brand
+const createBrand = (req, res) => {
+    const { name, logo, image, link } = req.body;
+    const newBrand = {
+        id: brands.length ? brands[brands.length - 1].id + 1 : 1,
+        name,
+        logo,
+        image,
+        link
+    };
+    brands.push(newBrand);
+    res.status(201).json({ id: newBrand.id });
+};
 
 export{
     getAllBrands,
-    getSingleBrand
+    getSingleBrand,
+    createBrand
 }
