@@ -5,11 +5,12 @@ import { useQuery } from '@tanstack/react-query';
 import Stars from '../../components/Stars/Stars';
 
 const BrandRatingPage = () => {
-  const { brandID } = useParams();
+  const { brand } = useParams();
 
   const { data, error, isPending } = useQuery({
-    queryKey: ['brands', brandID],
+    queryKey: ['brands', brand],
     queryFn: () => fetchBrandById(brandID),
+    // todo: change it to search by brand name
     retry: false,
   });
 

@@ -23,7 +23,7 @@ const AllBrands = () => {
     <div className={styles.links}>
       <h1>Ratings by Brand</h1>
       {data.map((brand) => (
-        <Link className={styles.link} key={brand._id} to={`/brands-rating/${brand._id}`}>
+        <Link className={styles.link} key={brand._id} to={`/brands/${brand.brandName}`}>
           <p>{brand.brandName}</p>
           <Stars numStars={3.5} />
         </Link>
