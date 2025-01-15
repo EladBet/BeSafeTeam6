@@ -3,7 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import rubberDuckRoutes from './routes/rubberDucks.js'; // Import the routes
+// import rubberDuckRoutes from './routes/rubberDucks.js'; // Import the routes
+import BrandRoutes from './routes/BrandRoutes.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,8 +20,8 @@ app.use(cors({
   origin: process.env.CLIENT_URL
 }));
 
-// Use the routes file for all `/ducks` routes
-app.use('/ducks', rubberDuckRoutes);
+// Use the routes file for all `/branda` routes
+app.use('/brands', BrandRoutes);
 
 // Start server
 const PORT = process.env.PORT;

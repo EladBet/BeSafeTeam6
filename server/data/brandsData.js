@@ -1,14 +1,9 @@
-import castroLogo from '../images/castroLogo'
-import castroModel from '../images/castroModel'
-import renuarLogo from '../images/renuarLogo'
-import renuarModel from '../images/renuarModel'
-
 const Brands = [
   {
     "id": 1,
     "name": "castro",
-    "logo": castroLogo,
-    "image": castroModel,
+    "logo": '../images/castroLogo.webp',
+    "image": '../images/castroModel.jpg',
     "home_page": "https://www.castro.com/",
     "links": [
         {
@@ -32,8 +27,8 @@ const Brands = [
   {
     "id": 2,
     "name": "renuar",
-    "logo": renuarLogo,
-    "image": renuarModel,
+    "logo": '../images/renuarLogo.png',
+    "image": '../images/renuarModel.jpg',
     "home_page": "https://www.renuar.co.il/home?page=women",
     "links": [
         {

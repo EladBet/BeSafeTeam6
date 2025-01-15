@@ -2,8 +2,20 @@ import brands from '../data/brandsData.js';
 
 // Get all brands
 const getAllBrands = (req, res) => {
-    res.status(200).json({ brands });
+    const filteredBrands = brands.map(brand => ({
+        id: brand.id,
+        name: brand.name,
+        logo: brand.logo,
+        image: brand.image,
+        score: 4 // TODO: change the score to determine by the algorithm
+    }));
+
+    // Sort the brands by score in descending order
+    filteredBrands.sort((a, b) => b.score - a.score);
+
+    res.status(200).json({ Brands:filteredBrands });
 };
+
 
 // Get a single brand
 const getSingleBrand = (req, res) => {
