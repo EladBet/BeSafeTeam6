@@ -3,6 +3,7 @@ import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import About from './pages/AboutPage/AboutPage';
 import Criteria from './pages/CriteriaPage/CriteriaPage';
+import Forum from './pages/ForumPage/Forum';
 import projectLogo from './assets/bodyfriendly-logo.png';
 import BrandRating from './pages/BrandRatingPage/BrandRatingPage';
 import AddBrand from './pages/AddBrandPage/AddBrandPage';
@@ -40,8 +41,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/criteria" element={<Criteria />} />
-            <Route path="/brands-rating" element={<AllBrands />} />
-            <Route path="/brands-rating/:brandID" element={<BrandRating />} />
+            <Route path="/brands" element={<AllBrands />} />
+            <Route path="/brands/:brand" element={<BrandRating />} />
+            <Route path="/rate-brand" element={<Forum />} />
             <Route path="/add-brand" element={<AddBrand />} />
           </Routes>
         </main>

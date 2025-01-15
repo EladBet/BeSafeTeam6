@@ -1,4 +1,5 @@
 import styles from './Criteria.module.css';
+import projectLogo from '../../assets/bodyfriendly-logo.png';
 
 function CriteriaPage() {
   return (
@@ -23,6 +24,7 @@ function CriteriaPage() {
       </ol>
       .חברות שקיבלו דירוג גבוה יזכו לקבל מאיתנו חותמת מיוחדת ויוצגו ברשימת המותגים המומלצים שלנו
       <p />
+      <img src={projectLogo} alt="Body Friendly Logo" className={styles.logo} />
     </div>
   );
 }

@@ -21,7 +21,7 @@ const Home = () => {
     navigate('/criteria');
   };
   const handleAllBrands = () => {
-    navigate('/brands-rating');
+    navigate('/brands');
   };
 
   useEffect(() => {
