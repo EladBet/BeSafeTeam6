@@ -1,19 +1,60 @@
+.criteriaPage {
+  text-align: center;
+  padding: 40px;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.8;
+}
 
-  
-  .criteriaLink {
-    color: #00695c;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: none;
-    margin-left: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .criteriaLink:hover {
-    color: #004d40;
-    text-decoration: underline;
-  }
-  .boldText {
-    font-weight: bold;
-  }
-    
+.criteriaPage h1 {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.criteriaPage h3 {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.criteriaPage ol {
+  padding: 0;
+}
+
+.criteriaPage ul {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.criteriaPage ul::before {
+  content: '✔'; 
+  color: #4CAF50; 
+  font-size: 1.2rem;
+  position: absolute;
+  right: 650px;
+}
+
+.boldText {
+  font-weight: bold;
+  color: #263238;
+}
+
+.criteriaPage p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+.logo {
+  display: block;
+  margin: 30px auto 0; 
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
