@@ -22,15 +22,39 @@ const getAllBrands = (req, res) => {
 };
 
 
-// Get a single brand
+// Get a single brand by name
 const getSingleBrand = (req, res) => {
-    const id = parseInt(req.params.id, 10);
-    const brand = brands.find(d => d.id === id);
+    const name = req.params.brand.toLowerCase();
+    const brand = brands.find(d => d.name.toLowerCase() === name);
 
     if (!brand) {
         return res.status(404).json({ mssg: "Brand not found" });
     }
-    res.status(200).json({ brand });
+
+    // TODO: chage to get the real score
+    const score = [{
+        criterion:"Sizing Variety",
+        details: "Extensive range of sizes for all body types",
+        rating: 4,
+        },
+        {
+        criterion:"Users rating",
+        details: "avg of the ratings given by the hsers",
+        rating: 3,
+        }
+    ]
+
+    const totalRating = score.reduce((sum, criterion) => sum + criterion.rating, 0);
+    const overallRating = totalRating / score.length;
+
+    const brandResponse = {
+        name: brand.name,
+        logo: brand.logo,
+        image: brand.image,
+        overall_rating: overallRating,
+        score: score
+    };
+    res.status(200).json({ brand:brandResponse });
 };
 
 // Create a new brand
