@@ -2,6 +2,9 @@ import brands from '../data/brandsData.js';
 
 // Get all brands
 const getAllBrands = (req, res) => {
+    // get how much brands to limit
+    const limit = parseInt(req.query.limit, 10) || 10;
+
     const filteredBrands = brands.map(brand => ({
         id: brand.id,
         name: brand.name,
@@ -12,8 +15,10 @@ const getAllBrands = (req, res) => {
 
     // Sort the brands by score in descending order
     filteredBrands.sort((a, b) => b.score - a.score);
+    // Limit brands
+    const limitedBrands = filteredBrands.slice(0, limit);
 
-    res.status(200).json({ Brands:filteredBrands });
+    res.status(200).json({ brands:limitedBrands });
 };
 
 

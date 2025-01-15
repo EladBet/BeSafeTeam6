@@ -20,7 +20,7 @@ app.use(cors({
   origin: process.env.CLIENT_URL
 }));
 
-// Use the routes file for all `/branda` routes
+// Use the routes file for all `/brands` routes
 app.use('/brands', BrandRoutes);
 
 // Start server
