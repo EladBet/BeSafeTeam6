@@ -1,45 +1,38 @@
 import styles from './BrandRating.module.css';
 import { useParams } from 'react-router-dom';
-import { fetchBrandById } from '../../mockBrands.model';
-import { useQuery } from '@tanstack/react-query';
+import useApi from '../../hooks/useApi';
 import Stars from '../../components/Stars/Stars';
 
 const BrandRatingPage = () => {
   const { brand } = useParams();
-
-  const { data, error, isPending } = useQuery({
-    queryKey: ['brands', brand],
-    queryFn: () => fetchBrandById(brandID),
-    // todo: change it to search by brand name
-    retry: false,
-  });
-
-  if (isPending) {
-    return <i>Loading...</i>;
-  }
+  const { data, loading, error } = useApi(`http://localhost:5000/brands/${brand}`);
 
   if (error) {
     return <p className={styles.error}>{error.message}</p>;
   }
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.bannerImage}>
-        <img src="/images/model.png" />
+        <img src={data.brand.image} alt="Brand Model" />
       </div>
       <div className={styles.pageContent}>
-        <h1>{data.name}</h1>
-
-        <h2 className={styles.ratingOverallText}>Rating Overall: {data.ratingOverall}</h2>
-        <Stars numStars={data.ratingOverall} className={styles.ratingOverallStars} />
+        {/* <h1>{data.brand.name}</h1> */}
+        <img src={data.brand.logo} alt="Brand Logo" />
+        <h2 className={styles.ratingOverallText}>Rating Overall: {data.brand.overall_rating}</h2>
+        <Stars numStars={data.brand.overall_rating} className={styles.ratingOverallStars} />
 
         <div className={styles.table}>
           <div className={styles.tableHeader}>Criterion</div>
           <div className={styles.tableHeader}>Details</div>
           <div className={styles.tableHeader}>Rating</div>
-          {data.ratingByCategory.map((obj) => (
-            <div key={obj.category} className={styles.tableRow}>
-              <div className={styles.tableCell}>{obj.category}</div>
+          {data.brand.score.map((obj) => (
+            <div key={obj.criterion} className={styles.tableRow}>
+              <div className={styles.tableCell}>{obj.criterion}</div>
               <div className={styles.tableCell}>{obj.details}</div>
               <div className={styles.tableCell}>
                 <Stars numStars={obj.rating} style={{ color: '#000000A0' }} />
