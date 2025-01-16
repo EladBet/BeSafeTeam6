@@ -6,8 +6,28 @@ const AddBrand = () => {
   const [link, setLink] = useState('');
   const [image, setImage] = useState(null);
 
-  const handleImageUpload = (event) => {
-    setImage(event.target.files[0]);
+  const handleImageUpload = async(event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('image', file);
+
+    try {
+      const response = await fetch('http://localhost:5000/images', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Error uploading image');
+      }
+
+      const data = await response.json();
+      setImage(data.imageUrl);
+    } catch (error) {
+      console.error('Upload failed', error);
+    }
+  }
   };
 
   return (
