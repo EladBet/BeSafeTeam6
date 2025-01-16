@@ -37,6 +37,11 @@ h1{
 .appNav .appLink .material-icons {
   font-size: 1.2em; 
   transition: transform 0.2s ease; 
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 1px 4px);
+  
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 1) 0px 4px 12px;
+  }
 }
 .aboutUs,
 .appLink {
@@ -53,6 +58,8 @@ h1{
   text-decoration: none; /* Remove underline */
   margin-left: 1rem; /* Add space between other links */
   transition: color 0.3s ease; /* Smooth color change on hover */
+  filter: drop-shadow(rgba(0, 0, 0, 0.13) 0px 1px 4px);
+
 }
 
 .aboutUs:hover {
@@ -63,8 +70,11 @@ h1{
   color: #5DC4E5; /* Replace with the exact light blue color from the logo */
   font-size: 21px; /* Keep the same size */
   margin: 0; /* Ensure proper alignment */
+  filter: drop-shadow(rgba(0, 0, 0, 0.13) 0px 1px 4px);
 }
-
+.emailIcon:hover {
+  filter: drop-shadow(rgba(0, 0, 0, 0.2) 0px 1px 4px);
+}
 .siteTitle {
   margin-block: 18px;
 }
@@ -81,7 +91,7 @@ h1{
 }
 
 .appLink:hover {
-  text-decoration: underline;
+  filter: drop-shadow(rgba(0, 0, 0, 0.15) 0px 1px 4px);
 }
 
 
