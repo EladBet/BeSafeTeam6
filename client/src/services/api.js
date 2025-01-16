@@ -1,12 +1,6 @@
-import axios from 'axios';
-const apiUrl = import.meta.env.VITE_SERVER_API_URL;
-
-// Create an instance of Axios with default configurations
-const axiosInstance = axios.create({
-  baseURL: apiUrl,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-export default axiosInstance;
+export async function fetchAllBrands() {
+  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands`;
+  const res = await fetch(url);
+  const json = await res.json();
+  return json.brands;
+}

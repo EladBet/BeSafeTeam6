@@ -1,15 +1,14 @@
-.custom-input-wrapper {
+.parent {
+  flex: 1;
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
-  height: 100%; /* Match the height of the input box */
+  max-width: 500px;
 }
 
-.search-icon {
-  font-size: 16px; /* Adjust icon size */
-  color: gray;
+.searchIcon {
   position: absolute;
-  left: 8px; /* Align inside the box */
-  top: -15px; /* Move the icon upwards */
-  pointer-events: none; /* Ensure it doesn’t block input interactions */
+  z-index: 50;
+  right: 48px;
+  color: rgb(126, 188, 140);
 }
