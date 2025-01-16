@@ -42,12 +42,26 @@ const AddBrand = () => {
 
     try {
       // const response = await useApi('http://localhost:5000/brands', 'POST', brandData);
+      const options = {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body:JSON.stringify(brandData)
+      };
+  
+      const response = await fetch('http://localhost:5000/brands', options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
 
-      // if (response.ok) {
-      //   console.log('Brand added successfully!');
-      // } else {
-      //   console.error('Error adding brand');
-      // }
+      
+      if (result.id) {
+        console.log('Brand added successfully!');
+      } else {
+        console.error('Error adding brand');
+      }
     } catch (error) {
       console.error('Error during submit', error);
     }
