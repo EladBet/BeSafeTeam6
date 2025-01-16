@@ -1,5 +1,6 @@
 import styles from './AddBrand.module.css'
 import { useState } from "react";
+// import useApi from '../../hooks/useApi';
 
 const AddBrand = () => {
   const [brandName, setBrandName] = useState('');
@@ -29,13 +30,34 @@ const AddBrand = () => {
     }
   }
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // prevent the from to reload
 
+    const brandData = {
+      brandName,
+      link,
+      imageUrl: image,
+    };
+    console.log(brandData);
+
+    try {
+      // const response = await useApi('http://localhost:5000/brands', 'POST', brandData);
+
+      // if (response.ok) {
+      //   console.log('Brand added successfully!');
+      // } else {
+      //   console.error('Error adding brand');
+      // }
+    } catch (error) {
+      console.error('Error during submit', error);
+    }
+  };
   return (
     <div className={styles.formContainer}>
       <h1>להצעת רשת חדשה לדירוג</h1>
       <h3>רוצים שנדרג את הרשת שלכם? כאן תוכלו להשאיר עליה פרטים </h3>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
       
       <div className={styles.formGroup}>
         <label htmlFor="brandName" className={styles.label}>
