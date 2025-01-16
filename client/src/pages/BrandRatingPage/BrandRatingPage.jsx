@@ -5,7 +5,7 @@ import Stars from '../../components/Stars/Stars';
 
 const BrandRatingPage = () => {
   const { brand } = useParams();
-  const { data, loading, error } = useApi(`http://localhost:5000/brands/${brand}`);
+  const { data, loading, error } = useApi(`http://localhost:5500/brands/${brand}`);
 
   if (error) {
     return <p className={styles.error}>{error.message}</p>;
