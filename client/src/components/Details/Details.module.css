@@ -16,3 +16,7 @@
   display: block;
   object-fit: contain;
 }
+
+.stars{
+  color: #81D4FA;
+}
