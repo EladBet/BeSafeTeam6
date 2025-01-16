@@ -40,7 +40,6 @@ const Home = () => {
       {error && <h3 style={{ color: 'red' }}>Error: {error.message}</h3>}
 
       <div className={styles.brandActionsPanel}>
-        <Search className={styles.search} />
         <FirstButton onClick={handleRating} disabled={false}>
           לדירוג חברות
         </FirstButton>
@@ -53,6 +52,8 @@ const Home = () => {
       </div>
 
       <h1 className={styles.headline}>Top 10 Fashion Brands Promoting Positive Body Image</h1>
+
+      <Search />
 
       <div className={styles.brands}>
         {Array.isArray(brands) &&

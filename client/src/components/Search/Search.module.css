@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   max-width: 500px;
+  margin-inline: auto;
+  margin-top: 24px;
+  margin-bottom: 32px;
 }
 
 .searchIcon {

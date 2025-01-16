@@ -1,6 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { useQuery } from '@tanstack/react-query';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 import { fetchAllBrands } from '../../services/api';
 import styles from './Search.module.css';
 
