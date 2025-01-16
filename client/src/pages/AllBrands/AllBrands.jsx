@@ -1,6 +1,4 @@
 import styles from './AllBrands.module.css';
-import { fetchAllBrands } from '../../services/api';
-import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import Stars from '../../components/Stars/Stars';
 import useApi from '../../hooks/useApi';
