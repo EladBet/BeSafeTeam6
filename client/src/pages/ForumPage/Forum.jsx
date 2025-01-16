@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import styles from './Forum.module.css'; 
-import { fetchAllBrands } from '../../mockBrands.model';
 import useApi from '../../hooks/useApi';
 
 const Forum = () => {
@@ -10,7 +9,7 @@ const Forum = () => {
   const [brands, setBrands] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('');
   const [rating, setRating] = useState(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(derror);
   const [error, setError] = useState('');
   const [rates, setRates] = useState([]);
 
@@ -38,7 +37,7 @@ const Forum = () => {
       message,
     };
     setRates([...rates, newRate]);
-    
+
     //  POST the rate
     useApi("http://localhost:5000/ratings/", "POST", newRate);
 
@@ -50,7 +49,7 @@ const Forum = () => {
 
   return (
     <div className={styles.forumContainer}>
-      <h1>פורום דירוג חברות</h1>
+      <h1>דירוג חברות</h1>
       {error && <div className={styles.errorText}>{error}</div>}
 
       <form onSubmit={handleSubmit}>
