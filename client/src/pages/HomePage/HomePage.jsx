@@ -10,8 +10,16 @@ import useApi from '../../hooks/useApi';
 const Home = () => {
   const navigate = useNavigate();
 
-  const { data, loading, error } = useApi(`${import.meta.env.VITE_SERVER_API_URL}/images`);
-  const [brands, setBrands] = useState(data);
+  const [brands, setBrands] = useState();
+
+  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands`;
+  const { data, loading, error } = useApi(url);
+
+  useEffect(() => {
+    if (data && Array.isArray(data.brands)) {
+      setBrands(data.brands);
+    }
+  }, [data]);
 
   const handleRating = () => {
     navigate('/rate-brand');
@@ -25,12 +33,6 @@ const Home = () => {
   const handleAllBrands = () => {
     navigate('/brands');
   };
-
-  useEffect(() => {
-    if (data && Array.isArray(data.brands)) {
-      setBrands(data.brands);
-    }
-  }, [data]);
 
   return (
     <div className={styles.home}>
