@@ -9,22 +9,14 @@
     padding: 10px;
 }
 
-stars {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .star {
-    font-size: 24px;
-    margin: 0 2px;
-  }
-  
-  .filled {
-    color: #7ebc8c;
-  }
-  
-  .empty {
-    color: #ccc;
-  }
+.logoImage {
+  width: 100px;
+  height: auto;
+  margin: 10px auto;
+  display: block;
+  object-fit: contain;
+}
+
+.stars{
+  color: #81D4FA;
+}

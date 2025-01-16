@@ -1,21 +1,77 @@
 import styles from './AddBrand.module.css'
 import { useState } from "react";
+// import useApi from '../../hooks/useApi';
 
 const AddBrand = () => {
   const [brandName, setBrandName] = useState('');
   const [link, setLink] = useState('');
   const [image, setImage] = useState(null);
 
-  const handleImageUpload = (event) => {
-    setImage(event.target.files[0]);
-  };
+  const handleImageUpload = async(event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('image', file);
 
+    try {
+      const response = await fetch('http://localhost:5000/images', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Error uploading image');
+      }
+
+      const data = await response.json();
+      setImage(data.imageUrl);
+    } catch (error) {
+      console.error('Upload failed', error);
+    }
+  }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // prevent the from to reload
+
+    const brandData = {
+      brandName,
+      link,
+      imageUrl: image,
+    };
+    console.log(brandData);
+
+    try {
+      // const response = await useApi('http://localhost:5000/brands', 'POST', brandData);
+      const options = {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body:JSON.stringify(brandData)
+      };
+  
+      const response = await fetch('http://localhost:5000/brands', options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+
+      
+      if (result.id) {
+        console.log('Brand added successfully!');
+      } else {
+        console.error('Error adding brand');
+      }
+    } catch (error) {
+      console.error('Error during submit', error);
+    }
+  };
   return (
     <div className={styles.formContainer}>
       <h1>להצעת רשת חדשה לדירוג</h1>
       <h3>רוצים שנדרג את הרשת שלכם? כאן תוכלו להשאיר עליה פרטים </h3>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
       
       <div className={styles.formGroup}>
         <label htmlFor="brandName" className={styles.label}>

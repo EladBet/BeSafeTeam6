@@ -1,22 +1,26 @@
 import { useState, useEffect } from 'react';
 import styles from './Forum.module.css'; 
-import { fetchAllBrands } from '../../mockBrands.model';
+import useApi from '../../hooks/useApi';
 
 const Forum = () => {
+  // GET all brands
+  const { data, loading, derror } = useApi("http://localhost:5000/brands");
+
   const [brands, setBrands] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('');
   const [rating, setRating] = useState(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(derror);
   const [error, setError] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [rates, setRates] = useState([]);
 
   useEffect(() => {
-    fetchAllBrands().then((brandsData) => {
-      setBrands(brandsData);
-    }).catch((err) => {
-      console.error(err);
-    });
-  }, []);
+    if (data && Array.isArray(data.brands)) {
+      // save all brands names
+      const filteredBrands = data.brands.map(brand => ({ name: brand.name }));
+      setBrands(filteredBrands);
+    }
+  }, [data]);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,14 +29,17 @@ const Forum = () => {
       return;
     }
 
-    const selectedBrandName = brands.find((brand) => brand.id === selectedBrand)?.name;
+    const selectedBrandName = brands.find((brand) => brand.name === selectedBrand)?.name;
 
-    const newMessage = {
+    const newRate = {
       brand: selectedBrandName,
       rating,
       message,
     };
-    setMessages([...messages, newMessage]);
+    setRates([...rates, newRate]);
+
+    //  POST the rate
+    // useApi("http://localhost:5000/ratings/", "POST", newRate);
 
     setSelectedBrand('');
     setRating(null);
@@ -42,11 +49,12 @@ const Forum = () => {
 
   return (
     <div className={styles.forumContainer}>
-      <h1>פורום דירוג חברות</h1>
+      {loading && <h3>loading...</h3>}
+      <h1>דירוג חברות</h1>
       {error && <div className={styles.errorText}>{error}</div>}
 
       <form onSubmit={handleSubmit}>
-        {/* שדה בחירת מותג */}
+        {/* choose brand */}
         <div className={styles.inputField}>
           <label htmlFor="brand">בחר מותג:</label>
           <select
@@ -63,7 +71,7 @@ const Forum = () => {
           </select>
         </div>
 
-        {/* דירוג */}
+        {/* rate: */}
         <div className={styles.rating}>
           <label>דירוג:</label>
           <div className={styles.stars}>
@@ -79,7 +87,7 @@ const Forum = () => {
           </div>
         </div>
 
-        {/* הודעת משתמש */}
+        {/* user message */}
         <div className={styles.messageInput}>
           <label htmlFor="message">הודעה:</label>
           <textarea
@@ -93,9 +101,9 @@ const Forum = () => {
       </form>
 
       <div className={styles.messagesList}>
-        {messages.map((msg, index) => (
+        {rates.map((msg, index) => (
           <div key={index} className={styles.message}>
-            <div className={styles.brandName}>{msg.brand}</div> {/* שם המותג */}
+            <div className={styles.brandName}>{msg.brand}</div> 
             <div className={styles.stars}>
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
@@ -106,7 +114,7 @@ const Forum = () => {
                 </span>
               ))}
             </div>
-            <p className={styles.messageContent}>{msg.message}</p> {/* תוכן ההודעה */}
+            <p className={styles.messageContent}>{msg.message}</p> 
           </div>
         ))}
       </div>
