@@ -7,10 +7,12 @@ export type StarsProps = {
 /**
  * Prop `numStars` should be between 0 and 5, including half steps.
  */
-const Stars = ({ numStars, ...props }: StarsProps) => {
-  const numFullStars = Math.floor(numStars);
-  const numEmptyStars = 5 - Math.ceil(numStars);
+const Stars = ({ numStars = 0, ...props }: StarsProps) => {
+  const validNumStars = isNaN(numStars) ? 0 : Math.max(0, Math.min(numStars, 5));
+  const numFullStars = Math.floor(validNumStars);
+  const numEmptyStars = 5 - Math.ceil(validNumStars);
   const shouldAddHalfStar = numFullStars + numEmptyStars < 5;
+  console.log({ numStars, validNumStars, numFullStars, numEmptyStars, shouldAddHalfStar });
 
   return (
     <div {...props}>

@@ -3,13 +3,13 @@ import FirstButton from '../../components/common/FirstButton/FirstButton';
 import Search from '../../components/Search/Search';
 import Brand from '../../components/Brand/Brand';
 import { useEffect, useState } from 'react';
-import data from '../../mocData.model'; // TODO: delete this when use real data
+import { fetchAllBrands, fetchBrandById } from '../../mockBrands.model';
 import { BrandContext } from '../../context/BrandContext';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
-  const [brands, setBrands] = useState(data);
+  const [brands, setBrands] = useState([]);
 
   const handleRating = () => {
     navigate('/rate-brand');
@@ -25,7 +25,16 @@ const Home = () => {
   };
 
   useEffect(() => {
-    setBrands(data); //TODO: change - update when ever the data change
+    const loadBrands = async () => {
+      try {
+        const data = await fetchAllBrands();
+        setBrands(data); // Update state with fetched data
+      } catch (error) {
+        console.error('Error fetching brands:', error);
+      }
+    };
+
+    loadBrands(); // Fetch brands when the component mounts
   }, []);
 
   return (

@@ -1,25 +1,15 @@
-.search{
-    display: flex;
-    flex-direction: row-reverse;
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-    border-radius: 30px;
-    justify-content: space-between;
-    width: 70%; 
-    max-width: 70%;
+.custom-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%; /* Match the height of the input box */
 }
 
-.input{
-    background: fixed;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    width: 80%;
-    direction: rtl; /* the text is from rught to left */
-}
-
-.btn{
-    width: 20%;
-    cursor: pointer;
+.search-icon {
+  font-size: 16px; /* Adjust icon size */
+  color: gray;
+  position: absolute;
+  left: 8px; /* Align inside the box */
+  top: -15px; /* Move the icon upwards */
+  pointer-events: none; /* Ensure it doesn’t block input interactions */
 }

@@ -1,12 +1,17 @@
+import modelImage from './assets/model.jpeg';
+
 export type brand = {
   id: string;
   name: string;
   ratingOverall: number;
+  championNumber: number;
+  userRating: number;
   ratingByCategory: Array<{
     category: string;
     details: string;
     rating: number;
   }>;
+  image: string;
 };
 
 const Brands: brand[] = [
@@ -14,6 +19,9 @@ const Brands: brand[] = [
     id: '1',
     name: 'Fashion Co.',
     ratingOverall: 5,
+    image: modelImage,
+    championNumber: 1,
+    userRating: 40,
     ratingByCategory: [
       {
         category: 'Sizing Variety',
@@ -36,6 +44,10 @@ const Brands: brand[] = [
     id: '2',
     name: 'Style Inc',
     ratingOverall: 4,
+    image: modelImage,
+    championNumber: 2,
+    userRating: 40,
+
     ratingByCategory: [
       {
         category: 'Sizing Variety',
@@ -58,6 +70,10 @@ const Brands: brand[] = [
     id: '3',
     name: 'Trendsetters Ltd.',
     ratingOverall: 4.5,
+    image: modelImage,
+    championNumber: 3,
+    userRating: 40,
+
     ratingByCategory: [
       {
         category: 'Sizing Variety',
@@ -80,6 +96,10 @@ const Brands: brand[] = [
     id: '4',
     name: 'The Good Clothes brand.',
     ratingOverall: 5,
+    image: modelImage,
+    championNumber: 4,
+    userRating: 40,
+
     ratingByCategory: [
       {
         category: 'Sizing Variety',
@@ -102,6 +122,10 @@ const Brands: brand[] = [
     id: '5',
     name: 'EcoFashion Hub.',
     ratingOverall: 4.5,
+    image: modelImage,
+    championNumber: 5,
+    userRating: 40,
+
     ratingByCategory: [
       {
         category: 'Sizing Variety',
@@ -124,6 +148,10 @@ const Brands: brand[] = [
     id: '6',
     name: 'Inclusive Wear Co.',
     ratingOverall: 4.7,
+    image: modelImage,
+    championNumber: 6,
+    userRating: 40,
+
     ratingByCategory: [
       {
         category: 'Sizing Variety',
@@ -150,7 +178,7 @@ export async function fetchBrandById(brandId: string) {
 
   const brand = Brands.find((brand) => brand.id == brandId);
   if (!brand) {
-    throw Error("No such brand");
+    throw Error('No such brand');
   }
 
   return brand;
@@ -162,16 +190,3 @@ export async function fetchAllBrands() {
 
   return Brands;
 }
-
-// Currently the type in mongo is:
-// type BrandInMongo = {
-//   _id: string;
-//   name: string;
-//   homePage: string;
-//   logo: string;
-// }
-
-// export async function fetchAllBrands() {
-//   const res = await fetch("http://localhost:4567/brands");
-//   return await res.json();
-// }

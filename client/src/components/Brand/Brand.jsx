@@ -19,6 +19,7 @@ const Brand = () => {
         <ChampionNumber number={brand.championNumber} />
         <img src={brand.image} alt="model" className={styles.modelImage} />
         <Details className={styles.details} />
+        {/* <Stars brand={brand} className={styles.stars} /> */}
         <Link to={`/brands/${brand.name}`} className={styles.moreDetails}>
           <ControlPointIcon onClick={handleClick} style={{ fontSize: 40, color: 'black' }} />
         </Link>{' '}
