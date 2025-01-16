@@ -34,6 +34,9 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
+      {loading && <h3>loading...</h3>}
+      {error && <h3 style={{ color: 'red' }}>Error: {error.message}</h3>}
+      
       <div className={styles.brandActionsPanel}>
         <Search className={styles.search} />
         <FirstButton onClick={handleRating} disabled={false}>

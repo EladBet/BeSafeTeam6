@@ -39,7 +39,7 @@ const Forum = () => {
     setRates([...rates, newRate]);
 
     //  POST the rate
-    useApi("http://localhost:5000/ratings/", "POST", newRate);
+    // useApi("http://localhost:5000/ratings/", "POST", newRate);
 
     setSelectedBrand('');
     setRating(null);
@@ -49,6 +49,7 @@ const Forum = () => {
 
   return (
     <div className={styles.forumContainer}>
+      {loading && <h3>loading...</h3>}
       <h1>דירוג חברות</h1>
       {error && <div className={styles.errorText}>{error}</div>}
 
