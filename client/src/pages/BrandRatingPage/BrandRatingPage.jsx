@@ -4,10 +4,10 @@ import useApi from '../../hooks/useApi';
 import Stars from '../../components/Stars/Stars';
 
 const BrandRatingPage = () => {
-  const { brand } = useParams();
-  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands`;
+  const { brand_id } = useParams();
 
-  const { data, loading, error } = useApi(`url${brand}`);
+  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands/${brand_id}`;
+  const { data, loading, error } = useApi(url);
 
   if (error) {
     return <p className={styles.error}>{error.message}</p>;

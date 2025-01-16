@@ -42,7 +42,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/criteria" element={<Criteria />} />
             <Route path="/brands" element={<AllBrands />} />
-            <Route path="/brands/:brand" element={<BrandRating />} />
+            <Route path="/brands/:brand_id" element={<BrandRating />} />
             <Route path="/rate-brand" element={<Forum />} />
             <Route path="/add-brand" element={<AddBrand />} />
           </Routes>
