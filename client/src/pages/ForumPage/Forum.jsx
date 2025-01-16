@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import styles from './Forum.module.css'; 
+import styles from './Forum.module.css';
 import useApi from '../../hooks/useApi';
 
 const Forum = () => {
   // GET all brands
-  const { data, loading, derror } = useApi("http://localhost:5000/brands");
+  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands`;
+
+  const { data, loading, derror } = useApi(url);
 
   const [brands, setBrands] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('');
@@ -16,11 +18,10 @@ const Forum = () => {
   useEffect(() => {
     if (data && Array.isArray(data.brands)) {
       // save all brands names
-      const filteredBrands = data.brands.map(brand => ({ name: brand.name }));
+      const filteredBrands = data.brands.map((brand) => ({ name: brand.name }));
       setBrands(filteredBrands);
     }
   }, [data]);
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +40,8 @@ const Forum = () => {
     setRates([...rates, newRate]);
 
     //  POST the rate
-    // useApi("http://localhost:5000/ratings/", "POST", newRate);
+    // const url = `${import.meta.env.VITE_SERVER_API_URL}/ratings`;
+    // useApi(url, "POST", newRate);
 
     setSelectedBrand('');
     setRating(null);
@@ -57,11 +59,7 @@ const Forum = () => {
         {/* choose brand */}
         <div className={styles.inputField}>
           <label htmlFor="brand">בחר מותג:</label>
-          <select
-            id="brand"
-            value={selectedBrand}
-            onChange={(e) => setSelectedBrand(e.target.value)}
-          >
+          <select id="brand" value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
             <option value="">בחר מותג</option>
             {brands.map((brand) => (
               <option key={brand.id} value={brand.id}>
@@ -90,31 +88,26 @@ const Forum = () => {
         {/* user message */}
         <div className={styles.messageInput}>
           <label htmlFor="message">הודעה:</label>
-          <textarea
-            id="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          ></textarea>
+          <textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
         </div>
 
-        <button type="submit" className={styles.submitButton}>שלח</button>
+        <button type="submit" className={styles.submitButton}>
+          שלח
+        </button>
       </form>
 
       <div className={styles.messagesList}>
         {rates.map((msg, index) => (
           <div key={index} className={styles.message}>
-            <div className={styles.brandName}>{msg.brand}</div> 
+            <div className={styles.brandName}>{msg.brand}</div>
             <div className={styles.stars}>
               {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  className={`${styles.star} ${msg.rating >= star ? styles.selected : ''}`}
-                >
+                <span key={star} className={`${styles.star} ${msg.rating >= star ? styles.selected : ''}`}>
                   ★
                 </span>
               ))}
             </div>
-            <p className={styles.messageContent}>{msg.message}</p> 
+            <p className={styles.messageContent}>{msg.message}</p>
           </div>
         ))}
       </div>

@@ -1,5 +1,5 @@
-import styles from './AddBrand.module.css'
-import { useState } from "react";
+import styles from './AddBrand.module.css';
+import { useState } from 'react';
 // import useApi from '../../hooks/useApi';
 
 const AddBrand = () => {
@@ -7,28 +7,29 @@ const AddBrand = () => {
   const [link, setLink] = useState('');
   const [image, setImage] = useState(null);
 
-  const handleImageUpload = async(event) => {
+  const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
       const formData = new FormData();
       formData.append('image', file);
 
-    try {
-      const response = await fetch('http://localhost:5000/images', {
-        method: 'POST',
-        body: formData,
-      });
+      try {
+        const url = `${import.meta.env.VITE_SERVER_API_URL}/images`;
+        const response = await fetch(url, {
+          method: 'POST',
+          body: formData,
+        });
 
-      if (!response.ok) {
-        throw new Error('Error uploading image');
+        if (!response.ok) {
+          throw new Error('Error uploading image');
+        }
+
+        const data = await response.json();
+        setImage(data.imageUrl);
+      } catch (error) {
+        console.error('Upload failed', error);
       }
-
-      const data = await response.json();
-      setImage(data.imageUrl);
-    } catch (error) {
-      console.error('Upload failed', error);
     }
-  }
   };
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent the from to reload
@@ -41,22 +42,21 @@ const AddBrand = () => {
     console.log(brandData);
 
     try {
-      // const response = await useApi('http://localhost:5000/brands', 'POST', brandData);
       const options = {
-        method:"POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body:JSON.stringify(brandData)
+        body: JSON.stringify(brandData),
       };
-  
-      const response = await fetch('http://localhost:5000/brands', options);
+
+      const url = `${import.meta.env.VITE_SERVER_API_URL}/brands`;
+      const response = await fetch(url, options);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
 
-      
       if (result.id) {
         console.log('Brand added successfully!');
       } else {
@@ -72,29 +72,30 @@ const AddBrand = () => {
       <h3>רוצים שנדרג את הרשת שלכם? כאן תוכלו להשאיר עליה פרטים </h3>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="brandName" className={styles.label}>
+        <div className={styles.formGroup}>
+          <label htmlFor="brandName" className={styles.label}>
             שם הרשת:
           </label>
-        <input type="text"
-               className={styles.input}
-               placeholder="שם הרשת" 
-               value={brandName}
-               onChange={(e)=>setBrandName(e.target.value)}
-        />
+          <input
+            type="text"
+            className={styles.input}
+            placeholder="שם הרשת"
+            value={brandName}
+            onChange={(e) => setBrandName(e.target.value)}
+          />
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="link" className={styles.label}>
             לינק לאתר:
           </label>
-          <input type="text" 
-                name="link" 
-                className={styles.input}
-                placeholder="לינק לאתר הרשת" 
-                value={link}
-                onChange={(e)=>setLink(e.target.value)}
+          <input
+            type="text"
+            name="link"
+            className={styles.input}
+            placeholder="לינק לאתר הרשת"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
           />
         </div>
 
@@ -115,7 +116,7 @@ const AddBrand = () => {
           שלח
         </button>
       </form>
-      
+
       {image && <p>תמונה שהועלתה: {image.name}</p>}
     </div>
   );

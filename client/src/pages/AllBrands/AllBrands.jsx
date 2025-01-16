@@ -4,7 +4,9 @@ import Stars from '../../components/Stars/Stars';
 import useApi from '../../hooks/useApi';
 
 const AllBrands = () => {
-  const { data, loading, error } = useApi('http://localhost:5500/brands');
+  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands`;
+
+  const { data, loading, error } = useApi(url);
 
   if (loading) {
     return <p className={styles.loading}>Loading...</p>;

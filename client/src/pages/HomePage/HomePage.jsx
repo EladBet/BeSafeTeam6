@@ -9,7 +9,8 @@ import useApi from '../../hooks/useApi';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { data, loading, error } = useApi('http://localhost:5000/brands/?limit=10');
+
+  const { data, loading, error } = useApi(`${import.meta.env.VITE_SERVER_API_URL}/images`);
   const [brands, setBrands] = useState(data);
 
   const handleRating = () => {
