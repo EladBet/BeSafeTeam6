@@ -12,7 +12,6 @@ const Stars = ({ numStars = 0, ...props }: StarsProps) => {
   const numFullStars = Math.floor(validNumStars);
   const numEmptyStars = 5 - Math.ceil(validNumStars);
   const shouldAddHalfStar = numFullStars + numEmptyStars < 5;
-  console.log({ numStars, validNumStars, numFullStars, numEmptyStars, shouldAddHalfStar });
 
   return (
     <div {...props}>

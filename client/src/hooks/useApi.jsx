@@ -26,7 +26,7 @@ const useApi = (endpoint, method = 'GET', body = null) => {
         const result = await response.json();
         if (!canceled) {
           setData(result);
-          console.log(result);
+          // console.log(result);
         }
       } catch (err) {
         if (!canceled) {
