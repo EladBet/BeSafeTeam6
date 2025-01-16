@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-
 import dotenv from 'dotenv';
 // import rubberDuckRoutes from './routes/rubberDucks.js'; // Import the routes
 import BrandRoutes from './routes/BrandRoutes.js';
@@ -30,7 +29,11 @@ const upload = multer({ storage: storage }); // Create multer instance with conf
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'images'))); // Serve static images
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+  })
+);
 
 // Define the route for image upload
 app.post('/images', upload.single('image'), (req, res) => {
