@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { BrandContext } from '../../context/BrandContext';
 import { useNavigate } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -59,7 +60,9 @@ const Home = () => {
         {Array.isArray(brands) &&
           brands.map((brand, index) => (
             <BrandContext.Provider key={index} value={{ ...brand, championNumber: index + 1 }}>
-              <Brand />
+              <Link to={`/brands/${brand.id}`} className={styles.moreDetails}>
+                <Brand />
+              </Link>{' '}
             </BrandContext.Provider>
           ))}
       </div>
