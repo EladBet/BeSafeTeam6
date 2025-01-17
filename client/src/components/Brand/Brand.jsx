@@ -15,7 +15,7 @@ const Brand = () => {
         <img src={brand.image} alt="model" className={styles.modelImage} />
         <Details className={styles.details} />
         {/* <Stars brand={brand} className={styles.stars} /> */}
-        <Link to={`/brands/${brand.name}`} className={styles.moreDetails}>
+        <Link to={`/brands/${brand.id}`} className={styles.moreDetails}>
           <ControlPointIcon style={{ fontSize: 40, color: 'black' }} />
         </Link>{' '}
       </div>
