@@ -1,16 +1,20 @@
 import express from 'express';
 import cors from 'cors';
 import { MongoClient, ServerApiVersion } from 'mongodb';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
-const port = 4567;
+const port = process.env.PORT;
 
 app.use(cors()); // allow accessing the server from all domains
 
-// MongoDB connection URI
-const uri = 'mongodb+srv://admin:aZ9ms3zmb3PP9v3@cluster0.0krd2.mongodb.net/?retryWrites=true&w=majority';
+const mongoUrl =
+  'mongodb+srv://admin:' +
+  process.env.MONGO_DB_PASSWORD +
+  +'@cluster0.0krd2.mongodb.net/?retryWrites=true&w=majority';
 
-const mongo = new MongoClient(uri, {
+const mongo = new MongoClient(mongoUrl, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
