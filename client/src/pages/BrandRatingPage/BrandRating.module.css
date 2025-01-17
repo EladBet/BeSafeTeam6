@@ -33,6 +33,14 @@
     align-items: center;
 }
 
+.brandLogo {
+    height: 50px;
+    margin-top: 16px;
+    margin-bottom: 44px;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 8px #679e84);
+}
+
 .ratingOverallText {
     color: #679e84;
     margin: 5px;

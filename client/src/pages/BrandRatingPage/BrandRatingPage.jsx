@@ -24,7 +24,7 @@ const BrandRatingPage = () => {
       </div>
       <div className={styles.pageContent}>
         {/* <h1>{data.brand.name}</h1> */}
-        <img src={data.brand.logo} alt="Brand Logo" />
+        <img src={data.brand.logo} alt="Brand Logo" className={styles.brandLogo} />
         <h2 className={styles.ratingOverallText}>Rating Overall: {data.brand.overall_rating}</h2>
         <Stars numStars={data.brand.overall_rating} className={styles.ratingOverallStars} />
 

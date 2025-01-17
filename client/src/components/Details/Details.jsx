@@ -8,7 +8,7 @@ const Details = () => {
 
   return (
     <div className={styles.details}>
-      <h1>{brand.name}</h1>
+      <h2 className={styles.brandName}>{brand.name}</h2>
       <img src={brand.logo} alt="logo" className={styles.logoImage} />
       <div className={styles.stars}>
         <Stars numStars={brand.score} />
