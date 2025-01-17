@@ -60,7 +60,7 @@ const Home = () => {
         {Array.isArray(brands) &&
           brands.map((brand, index) => (
             <BrandContext.Provider key={index} value={{ ...brand, championNumber: index + 1 }}>
-              <Link to={`/brands/${brand.id}`} className={styles.moreDetails}>
+              <Link to={`/brands/${brand._id}`} className={styles.moreDetails}>
                 <Brand />
               </Link>{' '}
             </BrandContext.Provider>

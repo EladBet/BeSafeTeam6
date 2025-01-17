@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5500;
 
 // Set up multer storage configuration
 const storage = multer.diskStorage({
@@ -52,7 +53,7 @@ app.use('/brands', BrandRoutes);
 app.use('/ratings', ratingRouter);
 
 // Start server
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

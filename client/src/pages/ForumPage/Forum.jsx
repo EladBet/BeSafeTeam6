@@ -62,7 +62,7 @@ const Forum = () => {
           <select id="brand" value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
             <option value="">בחר מותג</option>
             {brands.map((brand) => (
-              <option key={brand.id} value={brand.id}>
+              <option key={brand._id} value={brand._id}>
                 {brand.name}
               </option>
             ))}

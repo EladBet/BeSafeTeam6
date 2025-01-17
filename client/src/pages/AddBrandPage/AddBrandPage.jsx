@@ -1,6 +1,6 @@
 import styles from './AddBrand.module.css';
 import { useState } from 'react';
-// import useApi from '../../hooks/useApi';
+import useApi from '../../hooks/useApi';
 
 const AddBrand = () => {
   const [brandName, setBrandName] = useState('');
@@ -57,7 +57,7 @@ const AddBrand = () => {
       }
       const result = await response.json();
 
-      if (result.id) {
+      if (result._id) {
         console.log('Brand added successfully!');
       } else {
         console.error('Error adding brand');

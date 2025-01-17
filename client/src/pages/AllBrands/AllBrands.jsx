@@ -24,7 +24,7 @@ const AllBrands = () => {
     <div className={styles.links}>
       <h1>Ratings by Brand</h1>
       {data.brands.map((brand) => (
-        <Link to={`/brands/${brand.id}`} className={styles.link} key={brand.id}>
+        <Link to={`/brands/${brand._id}`} className={styles.link} key={brand._id}>
           <img src={brand.logo} alt={`${brand.name} logo`} className={styles.logo} />
           <p>{brand.name}</p>
           <Stars numStars={brand.score} />
