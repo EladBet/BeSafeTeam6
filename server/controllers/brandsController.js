@@ -62,6 +62,7 @@ const getSingleBrand = (req, res) => {
 const createBrand = (req, res) => {
   const { name, logo, image, link } = req.body;
   const newBrand = {
+    // todo when we move to mongo, mongo will choose the id.
     id: brands.length ? brands[brands.length - 1].id + 1 : 1,
     name,
     logo,
