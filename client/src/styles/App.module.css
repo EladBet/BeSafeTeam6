@@ -2,8 +2,12 @@
 h1{
   color: #12393f;
 }
+
 .app {
   text-align: center;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 .appHeader {
@@ -98,9 +102,6 @@ h1{
 .main {
   padding: 20px;
   background-color: #e9f5fd; 
-  min-height: 100vh;
-  padding-bottom: 40px; /* Add padding to prevent footer overlap */
-
 }
 
 .footer {
