@@ -23,8 +23,9 @@ const Forum = () => {
     }
   }, [data]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async(e) => {
+    e.preventDefault(); // prevent the from to reload
+
     if (!selectedBrand || !rating || !message) {
       setError('יש למלא את כל השדות');
       return;
@@ -34,14 +35,36 @@ const Forum = () => {
 
     const newRate = {
       brand: selectedBrandName,
-      rating,
-      message,
+      score:rating,
+      text:message,
     };
     setRates([...rates, newRate]);
 
     //  POST the rate
-    // const url = `${import.meta.env.VITE_SERVER_API_URL}/ratings`;
-    // useApi(url, "POST", newRate);
+    try {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRate),
+      };
+
+      const url = `${import.meta.env.VITE_SERVER_API_URL}/ratings`;
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+
+      if (result.rate) {
+        console.log('Rate added successfully!');
+      } else {
+        console.error('Error adding rate');
+      }
+    } catch (error) {
+      console.error('Error during submit', error);
+    }
 
     setSelectedBrand('');
     setRating(null);
