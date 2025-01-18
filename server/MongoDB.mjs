@@ -3,9 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const mongoUrl =
-  //   'mongodb+srv://admin:' +
-  //   process.env.MONGO_DB_PASSWORD +
-  //   +'@cluster0.0krd2.mongodb.net/?retryWrites=true&w=majority';
   `mongodb+srv://admin:${process.env.MONGO_DB_PASSWORD}` +
   `@cluster0.0krd2.mongodb.net/myDatabase?retryWrites=true&w=majority`;
 
