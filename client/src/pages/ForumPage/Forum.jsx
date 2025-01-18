@@ -27,7 +27,8 @@ const Forum = () => {
   });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent the from to reload
+
     if (!selectedBrandName || !rating || !message) {
       setError('יש למלא את כל השדות');
       return;
