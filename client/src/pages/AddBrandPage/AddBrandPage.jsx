@@ -1,6 +1,5 @@
 import styles from './AddBrand.module.css';
 import { useState } from 'react';
-import useApi from '../../hooks/useApi';
 
 const AddBrand = () => {
   const [brandName, setBrandName] = useState('');

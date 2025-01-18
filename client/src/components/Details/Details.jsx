@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Details.module.css';
 import useBrand from '../../context/BrandContext';
 import Stars from '../Stars/Stars';
