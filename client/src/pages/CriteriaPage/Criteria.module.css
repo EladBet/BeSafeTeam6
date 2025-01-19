@@ -1,8 +1,15 @@
 .criteriaPage {
-  text-align: center;
+  text-align: right; 
+  direction: rtl; 
   padding: 40px;
   font-family: 'Arial', sans-serif;
   line-height: 1.8;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
+  box-sizing: border-box; 
 }
 
 .criteriaPage h1 {
@@ -10,30 +17,35 @@
   color: #4CAF50;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+  text-align: center; 
 }
 
 .criteriaPage h3 {
   font-size: 1.5rem;
   color: #555;
   margin-bottom: 20px;
+  text-align: center; 
 }
 
 .criteriaPage ol {
   padding: 0;
+  margin: 0;
 }
 
 .criteriaPage ul {
   margin-bottom: 20px;
-  padding-left: 20px;
+  padding-left: 0; 
   position: relative;
+  display: flex; 
+  justify-content: flex-start; 
+  align-items: center;
 }
 
 .criteriaPage ul::before {
   content: '✔'; 
   color: #4CAF50; 
   font-size: 1.2rem;
-  position: absolute;
-  right: 650px;
+  margin-right: 10px;
 }
 
 .boldText {
@@ -45,6 +57,7 @@
   font-size: 1.2rem;
   color: #666;
   margin-top: 20px;
+  text-align: center; 
 }
 
 .logo {
