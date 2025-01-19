@@ -34,7 +34,7 @@ async function uploadData() {
           logo: 'https://example.com/castro_logo.jpg',
           image: 'https://example.com/castro_image.png',
           home_page: 'https://www.castro.com',
-          rating_overall: 3.5,
+          score: 3.5,
           links: [
             { criteria: 'size', size: 'XL', type: 'top', link: 'https://www.castro.com/size-xl-top' },
             { criteria: 'size', size: 'L', type: 'bottom', link: 'https://www.castro.com/size-l-bottom' },
@@ -46,11 +46,23 @@ async function uploadData() {
           logo: 'https://example.com/renuar_logo.jpg',
           image: 'https://example.com/renuar_image.png',
           home_page: 'https://www.renuar.com',
-          rating_overall: 4.5,
+          score: 4.5,
           links: [
             { criteria: 'size', size: 'XL', type: 'top', link: 'https://www.renuar.com/size-xl-top' },
             { criteria: 'size', size: 'L', type: 'bottom', link: 'https://www.renuar.com/size-l-bottom' },
             { criteria: 'about', link: 'https://www.renuar.com/about' },
+          ],
+        },
+        {
+          name: 'fox',
+          logo: 'https://example.com/fox_logo.jpg',
+          image: 'https://example.com/fox_image.png',
+          home_page: 'https://www.fox.com',
+          score: 2.5,
+          links: [
+            { criteria: 'size', size: 'XL', type: 'top', link: 'https://www.fox.com/size-xl-top' },
+            { criteria: 'size', size: 'L', type: 'bottom', link: 'https://www.fox.com/size-l-bottom' },
+            { criteria: 'about', link: 'https://www.fox.com/about' },
           ],
         },
       ],
