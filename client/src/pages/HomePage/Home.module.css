@@ -1,6 +1,10 @@
 .home {
   text-align: center;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 60px;
+
+
 }
 
 .headline {
@@ -20,10 +24,10 @@
 
 .brands {
   display: flex;
-  gap: 20px;
+  gap: 40px;
   overflow-x: auto;
   width: 100%;
-  padding: 20px 0;
+  padding: 40px 0;
   align-items: stretch;
   margin-bottom: 30px;
 }

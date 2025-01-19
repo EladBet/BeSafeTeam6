@@ -4,8 +4,8 @@ import projectLogo from '../../assets/bodyfriendly-logo.png';
 function CriteriaPage() {
   return (
     <div className={styles.criteriaPage}>
-      <h1>?איך אנחנו מדרגות</h1>
-      <h3>:כל חברה שמבקשת לקבל חותמת מאיתנו נבדקת על פי קריטריונים מרכזיים</h3>
+      <h1>איך אנחנו מדרגות?</h1>
+      <h3>כל חברה שמבקשת לקבל חותמת מאיתנו נבדקת על פי קריטריונים מרכזיים:</h3>
       <br />
       <br />
       <ol>
@@ -22,7 +22,7 @@ function CriteriaPage() {
           גוף חיובי
         </ul>
       </ol>
-      .חברות שקיבלו דירוג גבוה יזכו לקבל מאיתנו חותמת מיוחדת ויוצגו ברשימת המותגים המומלצים שלנו
+      חברות שקיבלו דירוג גבוה יזכו לקבל מאיתנו חותמת מיוחדת ויוצגו ברשימת המותגים המומלצים שלנו
       <p />
       <img src={projectLogo} alt="Body Friendly Logo" className={styles.logo} />
     </div>

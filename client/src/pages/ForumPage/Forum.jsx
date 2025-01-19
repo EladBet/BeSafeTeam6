@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Forum.module.css';
 import useApi from '../../hooks/useApi';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
