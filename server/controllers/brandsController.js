@@ -18,7 +18,8 @@ const getAllBrands = async (req, res) => {
 
 const getBrandTableData = async (brand) => {
   try {
-    const nearestRun = await database.collection('runs')
+    const nearestRun = await database
+      .collection('runs')
       .find({
         'brands.name': brand, // Filter for the brand name
       })
@@ -42,12 +43,12 @@ const getBrandTableData = async (brand) => {
 };
 
 function calculateSizeDiversity(lastRun) {
-  const sizeCriteria = lastRun.filter(item => item.creteria === 'size');
+  const sizeCriteria = lastRun.filter((item) => item.creteria === 'size');
 
   if (sizeCriteria.length === 0) return 1; // No sizes, low diversity
 
-  const sizes = sizeCriteria.map(item => item.size);
-  const itemCounts = sizeCriteria.map(item => item.number_of_items);
+  const sizes = sizeCriteria.map((item) => item.size);
+  const itemCounts = sizeCriteria.map((item) => item.number_of_items);
   const totalItems = itemCounts.reduce((sum, count) => sum + count, 0);
 
   const uniqueSizes = new Set(sizes).size; // Number of unique sizes
@@ -103,6 +104,11 @@ const getSingleBrand = async (req, res) => {
         criterion: 'מגוון מידות',
         details: 'טווח רחב של מידות לכל סוגי הגוף',
         rating: sizeDiversityScore,
+      },
+      {
+        criterion: 'מגוון דוגמניות',
+        details: 'התמונות של הדוגמניות באתר מציגות מגוון מבני גוף וצבע',
+        rating: modelsScore,
       },
       {
         criterion: 'מגוון דוגמניות',

@@ -52,7 +52,7 @@ const Home = () => {
         </FirstButton>
       </div>
 
-      <h1 className={styles.headline}>Top 3 Fashion Brands Promoting Positive Body Image</h1>
+      <h1 className={styles.headline}> שלושת החברות המובילות בדימוי גוף חיובי</h1>
 
       <Search />
 

@@ -60,7 +60,6 @@
     gap: 8px;
     border-radius: 8px;
     overflow: hidden;
-    direction: rtl;
 
     .tableRow {
         display: contents;
