@@ -6,14 +6,68 @@ const brandsCollection = database.collection('brands');
 const ratesCollection = database.collection('rates');
 // Get all brands
 const getAllBrands = async (req, res) => {
-  // get how much brands to limit
-  const limit = parseInt(req.query.limit, 10);
+  try {
+    // Get how many brands to limit from the query parameters
+    const limit = parseInt(req.query.limit, 10);
 
-  let query = brandsCollection.find().sort({ score: 'descending' });
-  if (limit) {
-    query = query.limit(limit);
+    // Fetch all brands from the database
+    const brands = await brandsCollection.find().toArray();
+
+    // Add the 'score' field to each brand
+    for (let brand of brands) {
+      try {
+        // Fetch brand data using getBrandTableData
+        const lastRun = await getBrandTableData(brand.name);
+
+        if (!lastRun) {
+          brand.score = 0; // Default score if no data found
+        } else {
+          // Calculate size diversity score
+          const sizeDiversityScore = calculateSizeDiversity(lastRun.results);
+
+          // Extract about criterion score
+          const aboutCriterion = lastRun.results.find(item => item.creteria === 'about');
+          const aboutScore = aboutCriterion ? aboutCriterion.score : 0;
+
+          // Extract models criterion score
+          const modelsCriterion = lastRun.results.find(item => item.creteria === 'models');
+          const modelsScore = modelsCriterion ? modelsCriterion.score : 0;
+
+          // Fetch user ratings from ratesCollection
+          const rates = await ratesCollection.find({ brand_id: brand._id }).toArray();
+          const userRatings = rates.map(rate => rate.rating);
+          const averageUserRating =
+            userRatings.length > 0
+              ? userRatings.reduce((sum, rating) => sum + rating, 0) / userRatings.length
+              : 0;
+
+          // Calculate the overall score as the average of the criteria
+          const totalScore =
+            (sizeDiversityScore + aboutScore + modelsScore + averageUserRating) / 4;
+
+          // Assign the calculated score to the brand
+          brand.score = totalScore;
+        }
+      } catch (error) {
+        console.error(`Error processing brand ${brand.name}:`, error.message);
+        brand.score = 0; // Assign default score if an error occurs
+      }
+    }
+
+    // Sort brands by score in descending order
+    let sortedBrands = brands.sort((a, b) => b.score - a.score);
+
+    // Limit the results if specified
+    if (limit) {
+      sortedBrands = sortedBrands.slice(0, limit);
+    }
+
+    // Return the processed brands with their scores
+    res.status(200).json({ brands: sortedBrands });
+  } catch (error) {
+    console.error("Error processing brands:", error.message);
+    res.status(500).json({ error: "An error occurred while processing the request." });
   }
-  res.status(200).json({ brands: await query.toArray() });
 };
 
 const getBrandTableData = async (brand) => {
@@ -92,11 +146,6 @@ const getSingleBrand = async (req, res) => {
         criterion: 'מגוון מידות',
         details: 'טווח רחב של מידות לכל סוגי הגוף',
         rating: sizeDiversityScore,
-      },
-      {
-        criterion: 'מגוון דוגמניות',
-        details: 'התמונות של הדוגמניות באתר מציגות מגוון מבני גוף וצבע',
-        rating: modelsScore,
       },
       {
         criterion: 'מגוון דוגמניות',
