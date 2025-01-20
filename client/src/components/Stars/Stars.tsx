@@ -14,7 +14,7 @@ const Stars = ({ numStars = 0, ...props }: StarsProps) => {
   const shouldAddHalfStar = numFullStars + numEmptyStars < 5;
 
   return (
-    <div {...props}>
+    <div dir="ltr" {...props}>
       {[...Array(numFullStars)].map((_, i) => (
         <span className="material-icons" key={i}>
           star
