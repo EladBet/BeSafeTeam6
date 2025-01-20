@@ -85,7 +85,9 @@ const getSingleBrand = async (req, res) => {
 
     const rates = await ratesCollection.find({ brand_id: brandId }).toArray();
     const userRatings = rates.map(rate => rate.rating);
-    const averageUserRating = userRatings.length > 0 ? userRatings.reduce((sum, rating) => sum + rating, 0) / userRatings.length : 0;  // חישוב הממוצע, אם יש דירוגים
+    const averageUserRating = userRatings.length > 0 ? userRatings.reduce((sum, rating) => sum + rating, 0) / userRatings.length : 0;
+    const messages = rates.map(rate => rate.message);
+    console.log(messages)
 
     // console.log(sizeDiversityScore)
     // Example scores
@@ -117,6 +119,7 @@ const getSingleBrand = async (req, res) => {
       image: brand.image,
       overall_rating: overallRating,
       score,
+      messages,
     };
 
     res.status(200).json({ brand: brandResponse });
