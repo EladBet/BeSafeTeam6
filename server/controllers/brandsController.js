@@ -3,7 +3,7 @@ import database from '../MongoDB.mjs';
 import { ObjectId } from 'mongodb';
 
 const brandsCollection = database.collection('brands');
-
+const ratesCollection = database.collection('rates');
 // Get all brands
 const getAllBrands = async (req, res) => {
   // get how much brands to limit
@@ -83,6 +83,10 @@ const getSingleBrand = async (req, res) => {
     const aboutCriterion = lastRun.results.find(item => item.creteria === 'about');
     const aboutScore = aboutCriterion ? aboutCriterion.score : 0;
 
+    const rates = await ratesCollection.find({ brand_id: brandId }).toArray();
+    const userRatings = rates.map(rate => rate.rating);
+    const averageUserRating = userRatings.length > 0 ? userRatings.reduce((sum, rating) => sum + rating, 0) / userRatings.length : 0;  // חישוב הממוצע, אם יש דירוגים
+
     // console.log(sizeDiversityScore)
     // Example scores
     const score = [
@@ -97,9 +101,9 @@ const getSingleBrand = async (req, res) => {
         rating: aboutScore,
       },
       {
-        criterion: 'Users rating',
-        details: 'Average user ratings',
-        rating: 3,
+        criterion: 'דירוג משתמשים',
+        details: 'ממוצע של דירוגי המשתמשים',
+        rating: averageUserRating,
       },
     ];
 
