@@ -13,7 +13,7 @@ const Home = () => {
 
   const [brands, setBrands] = useState();
 
-  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands`;
+  const url = `${import.meta.env.VITE_SERVER_API_URL}/brands/?limit=3`;
   const { data, loading, error } = useApi(url);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Home = () => {
         </FirstButton>
       </div>
 
-      <h1 className={styles.headline}>Top 10 Fashion Brands Promoting Positive Body Image</h1>
+      <h1 className={styles.headline}>Top 3 Fashion Brands Promoting Positive Body Image</h1>
 
       <Search />
 
