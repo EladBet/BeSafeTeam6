@@ -79,6 +79,10 @@ const getSingleBrand = async (req, res) => {
     console.log("________________________________________________")
     console.log(lastRun)
     const sizeDiversityScore = calculateSizeDiversity(lastRun.results);
+
+    const aboutCriterion = lastRun.results.find(item => item.creteria === 'about');
+    const aboutScore = aboutCriterion ? aboutCriterion.score : 0;
+
     // console.log(sizeDiversityScore)
     // Example scores
     const score = [
@@ -86,6 +90,11 @@ const getSingleBrand = async (req, res) => {
         criterion: 'מגוון מידות',
         details: 'טווח רחב של מידות לכל סוגי הגוף',
         rating: sizeDiversityScore,
+      },
+      {
+        criterion: 'אודות',
+        details: 'האם החברה מקדמת באמצעות הפרסום שלה דימוי גוף חיובי',
+        rating: aboutScore,
       },
       {
         criterion: 'Users rating',
