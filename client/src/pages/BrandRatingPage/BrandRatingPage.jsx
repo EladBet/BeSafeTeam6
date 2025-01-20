@@ -29,9 +29,9 @@ const BrandRatingPage = () => {
         <Stars numStars={data.brand.overall_rating} className={styles.ratingOverallStars} />
 
         <div className={styles.table}>
-          <div className={styles.tableHeader}>Criterion</div>
-          <div className={styles.tableHeader}>Details</div>
-          <div className={styles.tableHeader}>Rating</div>
+          <div className={styles.tableHeader}>קריטריון</div>
+          <div className={styles.tableHeader}>פרטים</div>
+          <div className={styles.tableHeader}>דירוג</div>
           {data.brand.score.map((obj) => (
             <div key={obj.criterion} className={styles.tableRow}>
               <div className={styles.tableCell}>{obj.criterion}</div>
