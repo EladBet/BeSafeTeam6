@@ -52,7 +52,7 @@ const Home = () => {
         </FirstButton>
       </div>
 
-      <h1 className={styles.headline}>שלושת החברות המובילות</h1>
+      <h1 className={styles.headline}> שלושת החברות המובילות בדימוי גוף חיובי</h1>
 
       <Search />
 
