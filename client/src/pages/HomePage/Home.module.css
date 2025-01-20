@@ -2,7 +2,7 @@
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 50px;
+  
 }
 
 .headline {
@@ -22,10 +22,12 @@
 
 .brands {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
   overflow-x: auto;
   width: 100%;
   padding: 40px 0;
+  justify-content: center;
   align-items: stretch;
   margin-bottom: 30px;
 }
