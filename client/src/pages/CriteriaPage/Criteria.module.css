@@ -1,49 +1,58 @@
 .criteriaPage {
-  text-align: right; 
-  direction: rtl; 
+  text-align: center;
+  direction: rtl;
   padding: 40px;
   font-family: 'Arial', sans-serif;
   line-height: 1.8;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  height: 100vh; 
-  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* מרכז את התוכן במרכז */
+  justify-content: flex-start;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  max-width: 1200px; /* מגביל רוחב מכולה */
+  margin: 0 auto; /* ממקם את המכולה במרכז המסך */
 }
 
 .criteriaPage h1 {
   font-size: 2.5rem;
   color: #4CAF50;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
-  text-align: center; 
+  margin: 20px auto 40px; /* ריווח בין הכותרת ללוגו */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* נמתח לרוחב המכולה */
+  text-align: center; /* ממקם את הכותרת במרכז */
 }
 
 .criteriaPage h3 {
   font-size: 1.5rem;
   color: #555;
-  margin-bottom: 20px;
-  text-align: center; 
+  margin-bottom: 30px;
+  line-height: 1.6;
+  width: 100%; /* נמתח לרוחב המכולה */
+  text-align: right; /* יישור מימין */
 }
 
 .criteriaPage ol {
   padding: 0;
   margin: 0;
+  list-style: none;
+  width: 100%; /* נמתח לכל הרוחב */
 }
 
 .criteriaPage ul {
   margin-bottom: 20px;
-  padding-left: 0; 
-  position: relative;
-  display: flex; 
-  justify-content: flex-start; 
+  padding-left: 0;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
+  position: relative;
+  width: 100%; /* מוודא שהרשימה נמתחת לכל הרוחב */
 }
 
 .criteriaPage ul::before {
-  content: '✔'; 
-  color: #4CAF50; 
+  content: '✔';
+  color: #4CAF50;
   font-size: 1.2rem;
   margin-right: 10px;
 }
@@ -57,14 +66,14 @@
   font-size: 1.2rem;
   color: #666;
   margin-top: 20px;
-  text-align: center; 
 }
 
 .logo {
   display: block;
-  margin: 30px auto 0; 
-  width: 150px;
+  margin: 0 auto 20px; /* מרכז את הלוגו ויוצר ריווח מתחתיו */
+  width: 150px; /* גודל לוגו קבוע */
   height: auto;
+  align-self: center; /* מוודא שהלוגו ממורכז */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
