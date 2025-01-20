@@ -22,17 +22,15 @@ const getBrandTableData = async (brand) => {
       .find({
         'brands.name': brand, // Filter for the brand name
       })
-      .sort({ run_time: 1 }) // Sort by run_time (ascending)
+      .sort({ num:-1 }) // Sort by num
       .limit(1) // Get the nearest run
       .toArray();
-
     if (nearestRun.length === 0) {
       throw new Error('No runs found for this brand');
     }
 
     // Extract the matching brand details from the nearest run
     const matchingBrand = nearestRun[0].brands.find(b => b.name === brand);
-
     if (!matchingBrand) {
       throw new Error('Brand not found in the run');
     }
@@ -67,7 +65,7 @@ function calculateSizeDiversity(lastRun) {
 const getSingleBrand = async (req, res) => {
   try {
     const brandId = new ObjectId(req.params.brand_id);
-    console.log(brandId)
+    // console.log(brandId)
     const brand = await brandsCollection.findOne({ _id: brandId });
     // console.log(brand)
 
@@ -76,18 +74,27 @@ const getSingleBrand = async (req, res) => {
     }
 
     const lastRun = await getBrandTableData(brand.name);
-    console.log("________________________________________________")
-    console.log(lastRun)
+    // console.log("________________________________________________")
+    // console.log(lastRun)
+    // console.log("________________________________________________")
+
     const sizeDiversityScore = calculateSizeDiversity(lastRun.results);
 
     const aboutCriterion = lastRun.results.find(item => item.creteria === 'about');
+    // console.log("________________________________________________")
+    // console.log(aboutCriterion)
+    // console.log("________________________________________________")
+
     const aboutScore = aboutCriterion ? aboutCriterion.score : 0;
+
+    const modelsCriterion = lastRun.results.find(item => item.creteria === 'models');
+    const modelsScore = modelsCriterion ? modelsCriterion.score : 0;
 
     const rates = await ratesCollection.find({ brand_id: brandId }).toArray();
     const userRatings = rates.map(rate => rate.rating);
     const averageUserRating = userRatings.length > 0 ? userRatings.reduce((sum, rating) => sum + rating, 0) / userRatings.length : 0;
     const messages = rates.map(rate => rate.message);
-    console.log(messages)
+    // console.log(messages)
 
     // console.log(sizeDiversityScore)
     // Example scores
@@ -96,6 +103,11 @@ const getSingleBrand = async (req, res) => {
         criterion: 'מגוון מידות',
         details: 'טווח רחב של מידות לכל סוגי הגוף',
         rating: sizeDiversityScore,
+      },
+      {
+        criterion: 'מגוון דוגמניות',
+        details: 'התמונות של הדוגמניות באתר מציגות מגוון מבני גוף וצבע',
+        rating: modelsScore,
       },
       {
         criterion: 'אודות',
