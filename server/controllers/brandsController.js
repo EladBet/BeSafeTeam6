@@ -66,26 +66,16 @@ function calculateSizeDiversity(lastRun) {
 const getSingleBrand = async (req, res) => {
   try {
     const brandId = new ObjectId(req.params.brand_id);
-    // console.log(brandId)
     const brand = await brandsCollection.findOne({ _id: brandId });
-    // console.log(brand)
 
     if (!brand) {
       return res.status(404).json({ mssg: 'Brand not found' });
     }
 
     const lastRun = await getBrandTableData(brand.name);
-    // console.log("________________________________________________")
-    // console.log(lastRun)
-    // console.log("________________________________________________")
-
     const sizeDiversityScore = calculateSizeDiversity(lastRun.results);
 
     const aboutCriterion = lastRun.results.find(item => item.creteria === 'about');
-    // console.log("________________________________________________")
-    // console.log(aboutCriterion)
-    // console.log("________________________________________________")
-
     const aboutScore = aboutCriterion ? aboutCriterion.score : 0;
 
     const modelsCriterion = lastRun.results.find(item => item.creteria === 'models');
@@ -95,10 +85,8 @@ const getSingleBrand = async (req, res) => {
     const userRatings = rates.map(rate => rate.rating);
     const averageUserRating = userRatings.length > 0 ? userRatings.reduce((sum, rating) => sum + rating, 0) / userRatings.length : 0;
     const messages = rates.map(rate => rate.message);
-    // console.log(messages)
 
-    // console.log(sizeDiversityScore)
-    // Example scores
+    // generate scores
     const score = [
       {
         criterion: 'מגוון מידות',
