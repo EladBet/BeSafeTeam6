@@ -114,7 +114,7 @@ const Forum = () => {
         </button>
       </form>
 
-      <div className={styles.messagesList}>
+      {/* <div className={styles.messagesList}>
         {rates?.map((msg, index) => (
           <div key={index} className={styles.message}>
             <div className={styles.brandName}>{msg.brand}</div>
@@ -128,7 +128,7 @@ const Forum = () => {
             <p className={styles.messageContent}>{msg.message}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
