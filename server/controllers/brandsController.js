@@ -16,21 +16,76 @@ const getAllBrands = async (req, res) => {
   res.status(200).json({ brands: await query.toArray() });
 };
 
+const getBrandTableData = async (brand) => {
+  try {
+    const nearestRun = await database.collection('runs')
+      .find({
+        'brands.name': brand, // Filter for the brand name
+      })
+      .sort({ run_time: 1 }) // Sort by run_time (ascending)
+      .limit(1) // Get the nearest run
+      .toArray();
+
+    if (nearestRun.length === 0) {
+      throw new Error('No runs found for this brand');
+    }
+
+    // Extract the matching brand details from the nearest run
+    const matchingBrand = nearestRun[0].brands.find(b => b.name === brand);
+
+    if (!matchingBrand) {
+      throw new Error('Brand not found in the run');
+    }
+
+    return matchingBrand;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+function calculateSizeDiversity(lastRun) {
+  const sizeCriteria = lastRun.filter(item => item.creteria === 'size');
+
+  if (sizeCriteria.length === 0) return 1; // No sizes, low diversity
+
+  const sizes = sizeCriteria.map(item => item.size);
+  const itemCounts = sizeCriteria.map(item => item.number_of_items);
+  const totalItems = itemCounts.reduce((sum, count) => sum + count, 0);
+
+  const uniqueSizes = new Set(sizes).size; // Number of unique sizes
+  const averageItemsPerSize = totalItems / uniqueSizes;
+
+  // Score determination based on a predefined rule:
+  if (uniqueSizes >= 10 && averageItemsPerSize > 100) return 5;
+  if (uniqueSizes >= 6 && averageItemsPerSize > 50) return 4;
+  if (uniqueSizes >= 3 && averageItemsPerSize > 20) return 3;
+  if (uniqueSizes >= 2) return 2;
+  return 1;
+}
+
 // Get a single brand by id
 const getSingleBrand = async (req, res) => {
   try {
     const brandId = new ObjectId(req.params.brand_id);
+    console.log(brandId)
     const brand = await brandsCollection.findOne({ _id: brandId });
+    // console.log(brand)
+
     if (!brand) {
       return res.status(404).json({ mssg: 'Brand not found' });
     }
 
+    const lastRun = await getBrandTableData(brand.name);
+    console.log("________________________________________________")
+    console.log(lastRun)
+    const sizeDiversityScore = calculateSizeDiversity(lastRun.results);
+    // console.log(sizeDiversityScore)
     // Example scores
     const score = [
       {
-        criterion: 'Sizing Variety',
-        details: 'Extensive range of sizes for all body types',
-        rating: 4,
+        criterion: 'מגוון מידות',
+        details: 'טווח רחב של מידות לכל סוגי הגוף',
+        rating: sizeDiversityScore,
       },
       {
         criterion: 'Users rating',
